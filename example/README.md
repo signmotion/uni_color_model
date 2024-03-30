@@ -1,6 +1,6 @@
 # Example
 
-See also `all_palettes` forlder with Flutter example.
+See also the package [UniColorPalette](https://github.com/signmotion/uni_color_palette) `example/all_palettes` folder with Flutter example that visualize palette.
 
 ## Getting Started
 

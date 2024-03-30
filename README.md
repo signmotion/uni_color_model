@@ -36,14 +36,19 @@ Share some ❤️ and star repo to support the project.
 ## Usage
 
 ```dart
-TODO
+final c = 0x1805db.rgbInt8Color;
+print(c.int24Hex);
+print(c.hasAlpha);
+print('Red channel: #${c.r.hex()}');
 ```
 
 ```text
-TODO
+1805db
+false
+Red channel: #18
 ```
 
-See also [uni_color_palette](https://github.com/signmotion/uni_color_palette) `example/all_palettes` forlder with Flutter example that visualize palette.
+See also [UniColorPalette](https://github.com/signmotion/uni_color_palette) `example/all_palettes` folder with Flutter example that visualize palette.
 
 ## Color Palettes
 
