@@ -16,12 +16,14 @@ Unified color structure for represent **any** color: model (CMYK, RGB, HSL, etc.
 depth per channel, channel-by-channel view (hex, dec, int, double, percentage. string), etc.
 Сan transform the structures.
 
+The easy-to-use and [well-tested](https://github.com/signmotion/uni_color_model/tree/master/test) package.
+Feel free to use it in your awesome projects.
+
 When you need to determine the color value by name or vice versa, refer to the package [UniColorName](https://github.com/signmotion/uni_color_name).
 
 If you're looking for a structured color palette, look at [UniColorPalette](https://github.com/signmotion/uni_color_palette).
 
-The easy-to-use and [well-tested](https://github.com/signmotion/uni_color_model/tree/master/test) package.
-Feel free to use it in your awesome projects.
+[<img src="https://raw.githubusercontent.com/signmotion/uni_color_model/master/images/dependencies.webp"/>](https://raw.githubusercontent.com/signmotion/uni_color_model/master/images/dependencies.webp)
 
 | Android | iOS | Linux | MacOS | Web | Windows |              |
 | :-----: | :-: | :---: | :---: | :-: | :-----: | :----------- |
