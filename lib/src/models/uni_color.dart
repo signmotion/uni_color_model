@@ -18,8 +18,7 @@ class UniColor<N extends num> {
     String? name,
     Names? names,
     this.group = '',
-  })  : assert(name != null || names != null),
-        _name = name,
+  })  : _name = name,
         _names = names;
 
   /// All converters has a suffix `Color`.
@@ -50,6 +49,7 @@ class UniColor<N extends num> {
   /// An alpha channel for most models.
   final N? channel0;
 
+  /// ! `true` for any [channel0] values when [channel0] is not `null`.
   bool get hasAlpha => channel0 != null;
 
   final N channel1;
@@ -69,7 +69,7 @@ class UniColor<N extends num> {
 
   /// A color name on [defaultLanguage].
   final String? _name;
-  String get name => _name ?? names[defaultLanguage]!;
+  String get name => _name ?? _names?[defaultLanguage] ?? '';
 
   /// Color names.
   final Names? _names;
@@ -80,6 +80,7 @@ class UniColor<N extends num> {
 
   bool get hasName => names.map.isNotEmpty;
 
+  /// TODO(sign): optimize fine Provide [copyWith] for all operators.
   @override
   bool operator ==(Object other) =>
       other is UniColor<N> &&

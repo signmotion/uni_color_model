@@ -14,7 +14,6 @@ class RgbInt8Color extends Int8Color {
     super.names,
     super.group,
   }) : super(
-          channel0: 255,
           model: ColorModel.rgb,
         );
 

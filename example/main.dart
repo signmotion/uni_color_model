@@ -3,5 +3,8 @@
 import 'package:uni_color_model/uni_color_model.dart';
 
 void main() {
-  // TODO
+  final c = 0x1805db.rgbInt8Color;
+  print(c.int24Hex);
+  print(c.hasAlpha);
+  print('Red channel: #${c.r.hex()}');
 }
