@@ -2,7 +2,7 @@ part of '../../uni_color_model.dart';
 
 /// The universal class for color.
 /// The values can represent any [ColorModel] with opacity typed [N].
-class UniColor<N extends num> {
+class UniColor<N extends num> implements Comparable<UniColor<N>> {
   const UniColor({
     required this.channelDepths,
     required this.channelRanges,
@@ -178,9 +178,12 @@ class UniColor<N extends num> {
   void assertArgbModel() {
     if (model == ColorModel.rgb) {
     } else {
-      throw ArgumentError('The color models should be ARGB. `$model`');
+      throw ArgumentError('The color models should be RGB. `$model`');
     }
   }
+
+  @override
+  int compareTo(UniColor<N> b) => '$this'.compareTo('$b');
 
   @override
   String toString() => ' $channelDepths'
