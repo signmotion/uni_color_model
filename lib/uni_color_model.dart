@@ -9,7 +9,7 @@ part 'src/extensions/double.dart';
 part 'src/extensions/int.dart';
 part 'src/extensions/list_int.dart';
 part 'src/extensions/string.dart';
-part 'src/extensions/DEPRECATED_uni_color.dart';
+part 'src/extensions/uni_color.dart';
 
 part 'src/models/argb_double.dart';
 part 'src/models/argb_int_4.dart';
