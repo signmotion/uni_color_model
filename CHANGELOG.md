@@ -5,4 +5,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.1.0
 
-- Initial release. Separated from [UniColorName](https://github.com/signmotion/uni_color_model).
+- Initial release. Separated from [UniColorName](https://github.com/signmotion/uni_color_name).

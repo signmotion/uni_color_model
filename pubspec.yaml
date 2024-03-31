@@ -8,6 +8,7 @@ topics:
   - model
   - transform
   - image
+  - palette
 
 # Format:
 #   version: major.minor.patch
