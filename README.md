@@ -58,7 +58,7 @@ See the package [uni_color_palette](https://github.com/signmotion/uni_color_pale
 
 ## Glossary
 
-### [https://en.wikipedia.org/wiki/Color_depth](Color depth or Bit depth)
+### [Color depth or Bit depth](https://en.wikipedia.org/wiki/Color_depth)
 
 The number of bits per pixel in a bitmap image. [List of common depths](https://en.wikipedia.org/wiki/Color_depth#List_of_common_depths).
 
@@ -206,7 +206,7 @@ Once you start using the **UniColorModel**, it will become easy to choose the fu
 
 - Feautures for this package into `README`.
 
-- Dependency to `collection` package. We can without it.
+- Dependency to `collection` package. We can do without.
 
 - Check out the Web platform.
 - Converters between models. See [1](https://pub.dev/packages/color_models), [2](https://dev.to/bytebodger/determining-the-rgb-distance-between-two-colors-4n91), [3](https://github.com/MichaelFenwick/Color).
