@@ -2,29 +2,14 @@ part of '../uni_color_model.dart';
 
 /// A palette with colors [UniColor].
 /// See structures into the `README`.
-/// [T] is a type of [UniColor].
-abstract class Palette<T> {
-  /// ! [map] should contains 1 model.
-  const Palette(this.list) : assert(list.length > 1);
-
-  /// List of all colors [C].
-  final List<UniColor<T>> list;
-
-  ColorModel get model => list.first.model;
-
-  /// Number of colors.
-  int get count => list.length;
-
-  /// Color [C] by name.
-  UniColor<T>? operator [](String colorName) =>
-      list.firstWhereOrNull((c) => c.hasName && c.name == colorName);
-}
-
-/// The universal palette for represent any color as a [UniColor]-typed value.
-/// Adding an alpha when absent.
-/// [T] is a type of [UniColor].
-class UniPalette<T> extends Palette<T> {
-  UniPalette(super.list);
+/// [T] is a type for [UniColor].
+class UniPalette<T> {
+  const UniPalette(
+    this.list, {
+    this.name = '',
+    this.license = '',
+    this.source = '',
+  }) : assert(list.length > 1, 'The palette must contain 2 or more colors.');
 
   /// Constructing from [File].
   /// See [UniPalette.iterable].
@@ -77,4 +62,28 @@ class UniPalette<T> extends Palette<T> {
 
     return UniPalette(list);
   }
+
+  /// Name of palette.
+  final String name;
+
+  /// License of palette.
+  final String license;
+
+  /// Source of palette.
+  final String source;
+
+  /// List of all colors.
+  final List<UniColor<T>> list;
+
+  ColorModel get model => list.first.model;
+
+  /// Number of colors.
+  int get count => list.length;
+
+  /// Color by name.
+  UniColor<T>? operator [](String colorName) =>
+      list.firstWhereOrNull((c) => c.hasName && c.name == colorName);
+
+  @override
+  String toString() => 'Palette "$name" contains $count colors.';
 }
