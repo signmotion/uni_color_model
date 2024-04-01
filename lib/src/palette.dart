@@ -2,26 +2,28 @@ part of '../uni_color_model.dart';
 
 /// A palette with colors [UniColor].
 /// See structures into the `README`.
-abstract class Palette<T extends UniColor> {
+/// [T] is a type of [UniColor].
+abstract class Palette<T> {
   /// ! [map] should contains 1 model.
   const Palette(this.list) : assert(list.length > 1);
 
-  /// List of all colors [T].
-  final List<T> list;
+  /// List of all colors [C].
+  final List<UniColor<T>> list;
 
   ColorModel get model => list.first.model;
 
   /// Number of colors.
   int get count => list.length;
 
-  /// Color [T] by name.
-  T? operator [](String colorName) =>
+  /// Color [C] by name.
+  UniColor<T>? operator [](String colorName) =>
       list.firstWhereOrNull((c) => c.hasName && c.name == colorName);
 }
 
-/// The universal palette for represent any color as a [T]-typed value.
+/// The universal palette for represent any color as a [UniColor]-typed value.
 /// Adding an alpha when absent.
-class UniPalette<T extends UniColor> extends Palette<T> {
+/// [T] is a type of [UniColor].
+class UniPalette<T> extends Palette<T> {
   UniPalette(super.list);
 
   /// Constructing from [File].
@@ -70,7 +72,8 @@ class UniPalette<T extends UniColor> extends Palette<T> {
           ' We have: ${iterable.length} $iterable');
     }
 
-    final list = [for (final v in iterable) v.argbInt8Color] as List<T>;
+    final list =
+        [for (final v in iterable) v.argbInt8Color] as List<UniColor<T>>;
 
     return UniPalette(list);
   }

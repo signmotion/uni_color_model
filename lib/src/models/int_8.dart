@@ -3,7 +3,7 @@ part of '../../uni_color_model.dart';
 /// Color with int 8 bits per channels.
 /// This is what is known as "true color".
 /// See https://en.wikipedia.org/wiki/Color_depth#True_color_(24-bit)
-class Int8Color extends UniColor<int> {
+class Int8Color extends NumColor<int> {
   const Int8Color({
     required super.model,
     super.channelPresentation,

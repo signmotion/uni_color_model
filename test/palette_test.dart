@@ -5,7 +5,7 @@ void main() {
   group('Palette - load from file', () {
     test('absent file', () {
       expect(
-          () => UniPalette.file(
+          () => UniPalette<int>.file(
                 'test/data/palettes/absent_file.json',
                 ColorModel.rgb,
               ),
@@ -14,7 +14,7 @@ void main() {
 
     test('empty', () {
       expect(
-          () => UniPalette.file(
+          () => UniPalette<int>.file(
                 'test/data/palettes/empty.json',
                 ColorModel.rgb,
               ),
@@ -23,7 +23,7 @@ void main() {
 
     test('1 color', () {
       expect(
-          () => UniPalette.file(
+          () => UniPalette<int>.file(
                 'test/data/palettes/1_color.json',
                 ColorModel.rgb,
               ),
@@ -31,7 +31,7 @@ void main() {
     });
 
     test('2 colors', () {
-      final palette = UniPalette.file(
+      final palette = UniPalette<int>.file(
         'test/data/palettes/black_white.json',
         ColorModel.rgb,
       );
@@ -41,7 +41,7 @@ void main() {
     });
 
     test('grey_0_255', () {
-      final palette = UniPalette.file(
+      final palette = UniPalette<int>.file(
         'test/data/palettes/grey_0_255.json',
         ColorModel.rgb,
       );

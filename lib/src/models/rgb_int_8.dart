@@ -57,7 +57,7 @@ class RgbInt8Color extends Int8Color {
 
   /// [int] presentation.
   int get int24 =>
-      ((0xff & r) << 16 | (0xff & g) << 8 | (0xff & b) << 0) & 0xFFFFFF;
+      ((0xff & r) << 16 | (0xff & g) << 8 | (0xff & b) << 0) & 0xffffff;
 
   /// [int] presentation.
   String get int24Hex => int24.int8Channels123HexColor;

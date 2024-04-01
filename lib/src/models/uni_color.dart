@@ -1,8 +1,9 @@
 part of '../../uni_color_model.dart';
 
 /// The universal class for color.
-/// The values can represent any [ColorModel] with opacity typed [N].
-class UniColor<N extends num> implements Comparable<UniColor<N>> {
+/// The values can represent any [ColorModel] with opacity typed [T].
+/// [T] can be [int], [double], [String], etc.
+class UniColor<T> implements Comparable<UniColor<T>> {
   const UniColor({
     required this.channelDepths,
     required this.channelRanges,
@@ -21,40 +22,26 @@ class UniColor<N extends num> implements Comparable<UniColor<N>> {
   })  : _name = name,
         _names = names;
 
-  /// All converters has a suffix `Color`.
-  RgbInt8Color get rgbInt8Color => RgbInt8Color(
-        channelPresentation: channelPresentation,
-        channel1: channel1.round(),
-        channel2: channel2.round(),
-        channel3: channel3.round(),
-        code: code,
-        index: index,
-        defaultLanguage: defaultLanguage,
-        name: name,
-        names: names,
-        group: group,
-      );
-
   /// Bits per channels including [channel0].
   /// [channel0] goes first.
   final List<int> channelDepths;
 
   /// Min and max values for channels.
-  final List<(N, N)> channelRanges;
+  final List<(T, T)> channelRanges;
 
   final ColorModel model;
 
   final ColorChannelPresentation channelPresentation;
 
   /// An alpha channel for most models.
-  final N? channel0;
+  final T? channel0;
 
   /// ! `true` for any [channel0] values when [channel0] is not `null`.
   bool get hasAlpha => channel0 != null;
 
-  final N channel1;
-  final N channel2;
-  final N channel3;
+  final T channel1;
+  final T channel2;
+  final T channel3;
 
   /// Some colors have an index.
   final int? index;
@@ -83,92 +70,51 @@ class UniColor<N extends num> implements Comparable<UniColor<N>> {
   /// TODO(sign): optimize fine Provide [copyWith] for all operators.
   @override
   bool operator ==(Object other) =>
-      other is UniColor<N> &&
+      other is UniColor<T> &&
       channelDepths == other.channelDepths &&
       channelRanges == other.channelRanges &&
       model == other.model &&
       channelPresentation == other.channelPresentation &&
-      channel0 == other.channel0 &&
-      channel1 == other.channel1 &&
-      channel2 == other.channel2 &&
-      channel3 == other.channel3 &&
+      equalChannels(other) &&
       index == other.index &&
       code == other.code &&
       name == other.name &&
       group == other.group;
 
   /// Subtract channels.
-  UniColor operator -(UniColor b) {
-    assertSameModel(b);
-    assertArgbModel();
-    return UniColor(
-      channelDepths: channelDepths,
-      channelRanges: channelRanges,
-      model: model,
-      channelPresentation: channelPresentation,
-      channel0: ((channel0 ?? 0) - (b.channel0 ?? 0)) as N,
-      channel1: (channel1 - b.channel1) as N,
-      channel2: (channel2 - b.channel2) as N,
-      channel3: (channel3 - b.channel3) as N,
-      index: index,
-      code: code,
-      defaultLanguage: defaultLanguage,
-      name: name,
-      names: names,
-      group: group,
-    );
-  }
+  UniColor<T> operator -(UniColor<T> b) => throw UnimplementedError();
 
   /// this ^ 2
-  UniColor get square => UniColor(
-        channelDepths: channelDepths,
-        channelRanges: channelRanges,
-        model: model,
-        channelPresentation: channelPresentation,
-        channel0: ((channel0 ?? 0) * (channel0 ?? 0)) as N,
-        channel1: (channel1 * channel1) as N,
-        channel2: (channel2 * channel2) as N,
-        channel3: (channel3 * channel3) as N,
-        index: index,
-        code: code,
-        defaultLanguage: defaultLanguage,
-        name: name,
-        names: names,
-        group: group,
-      );
+  UniColor<T> get square => throw UnimplementedError();
 
-  N get summarize => ((channel0 ?? 0) + channel1 + channel2 + channel3) as N;
+  T get summarize => throw UnimplementedError();
 
   /// `true` when [channel0]s are equal.
-  bool equalChannel0(UniColor b, {int decimals = -1}) => (channel0 ?? 0)
-      .toDouble()
-      .equalWithDecimals((b.channel0 ?? 0).toDouble(), decimals: decimals);
+  bool equalChannel0(UniColor<T> b, {int decimals = -1}) =>
+      channel0 == b.channel0;
 
   /// `true` when [channel1]s are equal.
-  bool equalChannel1(UniColor b, {int decimals = -1}) => channel1
-      .toDouble()
-      .equalWithDecimals(b.channel1.toDouble(), decimals: decimals);
+  bool equalChannel1(UniColor<T> b, {int decimals = -1}) =>
+      channel1 == b.channel1;
 
   /// `true` when [channel2]s are equal.
-  bool equalChannel2(UniColor b, {int decimals = -1}) => channel2
-      .toDouble()
-      .equalWithDecimals(b.channel2.toDouble(), decimals: decimals);
+  bool equalChannel2(UniColor<T> b, {int decimals = -1}) =>
+      channel2 == b.channel2;
 
   /// `true` when [channel2]s are equal.
-  bool equalChannel3(UniColor b, {int decimals = -1}) => channel3
-      .toDouble()
-      .equalWithDecimals(b.channel3.toDouble(), decimals: decimals);
+  bool equalChannel3(UniColor<T> b, {int decimals = -1}) =>
+      channel3 == b.channel3;
 
   /// `true` when all channels are equal.
-  bool equalChannels(UniColor b, {int decimals = -1}) =>
+  bool equalChannels(UniColor<T> b, {int decimals = -1}) =>
       equalChannel0(b, decimals: decimals) &&
       equalChannel1(b, decimals: decimals) &&
       equalChannel2(b, decimals: decimals) &&
       equalChannel3(b, decimals: decimals);
 
-  bool sameModel(UniColor b) => model == b.model;
+  bool sameModel(UniColor<T> b) => model == b.model;
 
-  void assertSameModel(UniColor b) {
+  void assertSameModel(UniColor<T> b) {
     if (model != b.model) {
       throw ArgumentError('The color models should be same.'
           ' $model != ${b.model}');
@@ -183,7 +129,7 @@ class UniColor<N extends num> implements Comparable<UniColor<N>> {
   }
 
   @override
-  int compareTo(UniColor<N> b) => '$this'.compareTo('$b');
+  int compareTo(UniColor<T> b) => '$this'.compareTo('$b');
 
   @override
   String toString() => ' $channelDepths'
