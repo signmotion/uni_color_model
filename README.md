@@ -66,96 +66,105 @@ The number of bits per pixel in a bitmap image. [List of common depths](https://
 
 The formulas for color conversion are easily programmable, but we have many converters. So let's summarize them (TODO):
 
-| ⬇️ model (channels) |
-| ------------------- |
-| cmyk                |
-| rgb                 |
-| hsl                 |
-| hsv                 |
-| xyz                 |
+| alpha | model | type   | depth | structure  | tone           |
+| ----- | ----- | ------ | ----- | ---------- | -------------- |
+| false | cmyk  | double | 4     | ~~double~~ | int bits       |
+| true  | rgb   | int    | 8     | int        | int dec        |
+|       | hsl   |        | 10    | List       | int hex        |
+|       | hsv   |        | 16    | String     | percent double |
+|       | xyz   |        |       | UniColor   | percent int    |
 
-| ⬇️ num |
-| ------ |
-| double |
-| int    |
+- **alpha** == transparency (channel 0)
+- **model** == channels (1..4)
+- **type** == type channel
+- **depth** == depth per channel, for type `int` only
+- **structure** == how to keep a color
+- **tone** == how to represent a structure
 
-| ⬇️ depth per channel |
-| -------------------- |
-| 1                    |
-| 2                    |
-| 3                    |
-| 4                    |
-| 5                    |
-| 6                    |
-| ...                  |
+### Constructors `UniColor`
 
-| ⬇️ channel view |
-| --------------- |
-| dec             |
-| hex             |
-| percent         |
+- `argbInt8Color`, `rgbInt8Color`, ...
+- `acmykInt8Color`, `acmykInt8Color`, ...
+- ...
 
-| ⬇️ alpha (transparency) |
-| ----------------------- |
-| false                   |
-| true                    |
+#### Structures `int bits`
 
-| ⬇️ structure       |
-| ------------------ |
-| int                |
-| String             |
-| Iterable\<double\> |
-| Iterable\<int\>    |
-|                    |
-| UniColor\<double\> |
-| UniColor\<int\>    |
+- `0x0a1b2c`
+- `0xff0a1b2c` with alpha
+- `0xabc == 0xaabbcc`
+- `0xa == 0xaaaaaa`
 
-TODO A converter name using as extension and constructing by these schema: `color[SourceModel]To[Structure][ResultModel]()`.
+#### Structures `String<int hex>`
 
-For example:
+Case insensetivity.
 
-`colorRgbToIntCmyk`
-`colorRgbToInt`
-`colorRgbToIntHsl`
-...
-`colorRgbToStringCmyk`
-`colorRgbToString`
-...
-`colorRgbToUniColorDoubleCmyk`
-`colorRgbToUniColorDouble`
-...
-`colorRgbToUniColorIntCmyk`
-...
-`colorCmykToIterableDoubleRgb`
-`colorCmykToIterableInt`
-...
-`colorRgbToIterableIntHsv`
-`colorXyzToIterableIntXyz`
+Spaces between channels are allowed.
+
+- `'#0a1b2c' == '0a1b2c' == '0a 1b 2c'`
+- `'#ff0a1b2c' == 'ff0a1b2c' == 'ff 0a 1b 2c'`
+- `'#abc' == 'a b c' == 'aabbcc'`
+- `'#a' == 'aaaaaa'`
+
+#### Structures `String<int dec>`
+
+- `'12 134 205'`
+- `'255 12 134 205'`
+- `'120' == '120 120 120'`
+
+#### Structures `String<percent double>`
+
+- `'0.12 0.134 0.205'`
+- `'1.0 0.12 0.134 0.205'`
+- `'0.120' == '0.12 0.12 0.12'`
+
+#### Structures `percent<int>`
+
+- `'12% 13% 95%'`
+- `'100% 12% 13% 95%'`
+- `'20%' == '20% 20% 20%'`
+
+A converter name using a these schema:
+
+`[model][type][depth]To[model][type][depth][structure][tone]`.
 
 Examples of uses:
 
 ```dart
-// as ARGB model by default
-0xFFCC00DE.colorToString();
+// as ARGB model
+0xff0a1b2c.argbInt8ToArgbInt8StringIntHex();
+```
 
-// represent as XYZ model before transformation
-0xCC00DE.model(ColorModel.hsl).colorToString();
-// or with same result
-0xCC00DE.colorModelHsl.colorToString();
+```text
+ff0a1b2c
+```
 
-// as ARGB model by default
-'ffcc00de'.colorToInt();
+```dart
+// as ARGB model, auto added alpha
+0x0a1b2c.rgbInt8ToArgbInt8StringIntHex();
+```
 
-// 255 is a max value for the channel for normalize a color to range [0.0; 1.0]
-[1, 12, 128].colorToUniColorDouble(255);
-// the result will be `(1.0, 1 / 255, 12 / 255, 128 / 255)`
+```text
+ff0a1b2c
+```
 
-// but in this case
-[1, 12, 128].colorToUniColorDouble();
-// the result will be `(255.0, 1.0, 12.0, 128.0)`
+```dart
+// as RGB UniColor with int, 16 bits per channel
+0x0a1b2c.rgbInt8ToRgbInt16Color();
+```
 
-[0.1, 0.12, 0.128].colorToUniColorInt(255);
-// the result for this example: `(255, 0.1 * 255, 0.12 * 255, 0.128 * 255)`
+```text
+// type: RgbInt16Color
+0a1b2c
+```
+
+```dart
+// as RGB int, 16 bits per channel
+0x0a1b2c.rgbInt8ToRgbInt16();
+```
+
+```text
+// type: int
+000a001b002c
 ```
 
 ## Resources
@@ -210,13 +219,8 @@ Once you start using the **UniColorModel**, it will become easy to choose the fu
 
 - Check out the Web platform.
 - Converters between models. See [1](https://pub.dev/packages/color_models), [2](https://dev.to/bytebodger/determining-the-rgb-distance-between-two-colors-4n91), [3](https://github.com/MichaelFenwick/Color).
-- Generalized to `num` instead of `double` and `int`? Reason: reduce a count of extensions.
 - Converters between palettes.
 - How to define your own map for color palette.
-
-- Optimize a search.
-- Fuzzy search by name.
-- Fuzzy search by value.
 
 - Range checker to each model.
 - Autodetect a model when constructing a `Palette`.
@@ -237,8 +241,6 @@ Once you start using the **UniColorModel**, it will become easy to choose the fu
   CR: <https://en.m.wikipedia.org/wiki/Color_rendering_index>
 
 - Articles from <https://en.m.wikipedia.org/wiki/Index_of_color-related_articles>.
-
-- More names in different lanuages? [1](https://rgb.to/ral/6038)
 
 It's just a habit of mine: writing down ideas that come to mind while working on a project. I confess that I rarely return to these notes. But now, hopefully, even if you don't have an idea yet, the above notes will help you choose the suitable "feature" and become a contributor to the open-source community.
 
