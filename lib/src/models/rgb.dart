@@ -31,8 +31,7 @@ mixin RgbIntColorMix on UniColor<int> {
 
 mixin RgbInt8ColorMix on RgbIntColorMix {
   /// [int] presentation.
-  int get int24 =>
-      ((0xff & r) << 16 | (0xff & g) << 8 | (0xff & b) << 0) & 0xffffff;
+  int get int24 => (0xff & r) << 16 | (0xff & g) << 8 | (0xff & b) << 0;
 
   /// [int] presentation.
   String get int24Hex => int24.int8Channels123HexColor;
