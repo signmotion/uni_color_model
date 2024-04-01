@@ -20,11 +20,10 @@ class NumColor<T extends num> extends UniColor<T> {
   });
 
   /// Subtract channels.
-  @override
-  UniColor<T> operator -(UniColor<T> b) {
+  NumColor<T> operator -(UniColor<T> b) {
     assertSameModel(b);
     assertArgbModel();
-    return UniColor(
+    return NumColor(
       channelDepths: channelDepths,
       channelRanges: channelRanges,
       model: model,
@@ -42,8 +41,7 @@ class NumColor<T extends num> extends UniColor<T> {
     );
   }
 
-  @override
-  UniColor<T> get square => UniColor(
+  NumColor<T> get square => NumColor(
         channelDepths: channelDepths,
         channelRanges: channelRanges,
         model: model,
@@ -60,7 +58,6 @@ class NumColor<T extends num> extends UniColor<T> {
         group: group,
       );
 
-  @override
   T get summarize => ((channel0 ?? 0) + channel1 + channel2 + channel3) as T;
 
   /// `true` when [channel0]s are equal.

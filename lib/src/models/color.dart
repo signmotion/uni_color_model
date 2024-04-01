@@ -81,14 +81,6 @@ class UniColor<T> implements Comparable<UniColor<T>> {
       name == other.name &&
       group == other.group;
 
-  /// Subtract channels.
-  UniColor<T> operator -(UniColor<T> b) => throw UnimplementedError();
-
-  /// this ^ 2
-  UniColor<T> get square => throw UnimplementedError();
-
-  T get summarize => throw UnimplementedError();
-
   /// `true` when [channel0]s are equal.
   bool equalChannel0(UniColor<T> b, {int decimals = -1}) =>
       channel0 == b.channel0;
