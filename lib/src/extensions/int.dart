@@ -19,12 +19,6 @@ extension ColorModelInt8Ext on int {
   /// For example, ARGB.
   String get int8Channels0123HexColor => (this & 0xffffffff).hex(8);
 
-  /// TODO(sign): Remove its?
-  String get int8Channel0HexColor => int8Channel0Color.hex();
-  String get int8Channel1HexColor => int8Channel1Color.hex();
-  String get int8Channel2HexColor => int8Channel2Color.hex();
-  String get int8Channel3HexColor => int8Channel3Color.hex();
-
   /// Converts to hexadecimal [String] value with [n] padding left zeroes.
   String hex([int n = 2]) => toRadixString(16).padLeft(n, '0');
 }
