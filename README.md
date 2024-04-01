@@ -71,8 +71,9 @@ The formulas for color conversion are easily programmable, but we have many conv
 | false | cmyk  | double | 4     | ~~double~~ | int bits       |
 | true  | rgb   | int    | 8     | int        | int dec        |
 |       | hsl   |        | 10    | List       | int hex        |
-|       | hsv   |        | 16    | String     | percent double |
-|       | xyz   |        |       | UniColor   | percent int    |
+|       | hsv   |        | 16    | String     | num bits       |
+|       | xyz   |        |       | UniColor   | percent double |
+|       |       |        |       |            | percent int    |
 
 - **alpha** == transparency (channel 0)
 - **model** == channels (1..4)
@@ -80,6 +81,8 @@ The formulas for color conversion are easily programmable, but we have many conv
 - **depth** == depth per channel, for type `int` only
 - **structure** == how to keep a color
 - **tone** == how to represent a structure
+  - **int bits** == use when `int dec` same `int hex`
+  - **num bits** == generelization of `double` and `int`
 
 ### Constructors `UniColor`
 
