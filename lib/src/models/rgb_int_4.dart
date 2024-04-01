@@ -8,9 +8,12 @@ class RgbInt4Color extends Int4Color {
     required super.channel2,
     required super.channel3,
     super.index,
+    super.code,
+    super.defaultLanguage,
     super.name,
+    super.names,
+    super.group,
   }) : super(
-          channel0: 15,
           model: ColorModel.rgb,
         );
 }
