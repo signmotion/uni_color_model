@@ -228,57 +228,17 @@ Once you start using the **UniColorModel**, it will become easy to choose the fu
 
 - Colors with transparent. <https://ftp.pwg.org/pub/pwg/candidates/cs-pwgmsn20-20130328-5101.1.pdf>
 
-- Sources for color palettes.
-
-- More palettes. See [1](https://en.wikipedia.org/wiki/List_of_colors:_A%E2%80%93F), [2](https://en.m.wikipedia.org/wiki/List_of_color_palettes), [3](https://en.wikipedia.org/wiki/Lists_of_colors).
-- Faber Castell palettes. [1](https://curtisward.com/faber-castell-polychromos-pencils-colour-chart)
-- Colors from WIKI as palette? [1](<https://en.wikipedia.org/wiki/List_of_colors_(alphabetical)>)
-
-- Construct a palette by color scheme? Complementary, triad, tetrad, analogus, accented, split... [1](https://en.wikipedia.org/wiki/Color_scheme) [2](https://rgb.to/ral/6038)
-
-- In fashion balance palettes? [1](https://infashionbalance.com)
-- colorhunt.co palettes? [1](https://colorhunt.co)
-
-- PANTONE®, RAL®, Dulux®, Copic®, NCS®, HKS® and Prismacolor®. [!](https://github.com/fundevogel/we-love-colors)
-
-- ZxSpectrum palette [1](https://en.wikipedia.org/wiki/ZX_Spectrum_graphic_modes#Colour_palette)
-
-- [nice-color-palettes](https://github.com/Experience-Monks/nice-color-palettes) <- [colourlovers.com](https://colourlovers.com)
-- [r-color-palettes](https://github.com/EmilHvitfeldt/r-color-palettes)
-- [paletteer](https://github.com/EmilHvitfeldt/paletteer)
-- [palettable](https://github.com/jiffyclub/palettable)
-
-- Freetone. <https://en.m.wikipedia.org/wiki/Stuart_Semple#Freetone>
-
-- Color spaces (aka palettes) from <https://github.com/fundevogel/we-love-colors>.
-
-- RAL color system. <https://en.m.wikipedia.org/wiki/List_of_RAL_colours> | <https://ral-farben.de/alle-ral-farben> [1](https://github.com/fundevogel/we-love-colors) [2](https://pub.dev/packages/ral_color) [1](https://rgb.to/ral) [2](https://rgb.to/ral/6038) [all colors](https://web.archive.org/web/20201130075701/http://ral-farben.de/content/application-help/all-ral-colours-names/overview-ral-design-colours.html) or <https://ral-farben.de/en/downloads>
-- RAL light reflactance values? [1](https://ral-farben.de/en/downloads)
-- RAL Classic & Design system plus color names. [1](https://ral-farben.de/en/downloads)
-- RAL Classic, Design, Effect, Plastic P1, Plastic P2.
-- Meaning from [ISO 3864](https://en.m.wikipedia.org/wiki/ISO_3864)?
-
 - HKS color system. <https://en.m.wikipedia.org/wiki/HKS_(colour_system)>
 - Natural color system. <https://en.m.wikipedia.org/wiki/Natural_Color_System>
 
 - CIE-LAB, CIE-LCH, CIE-LUV, XYY, HUNTER-LAB. [1](https://canva.com/colors/color-meanings/orange)
-
-- Color blind friendly palettes. <https://commons.wikimedia.org/wiki/Commons:Creating_accessible_illustrations>
 
 - Color characteristics? For ex., LRV: <https://en.m.wikipedia.org/wiki/Light_reflectance_value> -> <https://thelandofcolor.com/lrv-light-reflectance-value-of-paint-colors>
   CR: <https://en.m.wikipedia.org/wiki/Color_rendering_index>
 
 - Articles from <https://en.m.wikipedia.org/wiki/Index_of_color-related_articles>.
 
-- Can we keep the palette organic combinations? [1](https://canva.com/learn/100-color-combinations/#100-color-palettes) [2](https://infashionbalance.com/fashion-palette-12-street-style)
-
-- Tagged color palettes. [1](https://colorhunt.co/palette/d61355f94a29fce22a30e3df)
-
-- Names in different lanuages? [1](https://rgb.to/ral/6038)
-
-- Meanings of color? [1](https://www.smashingmagazine.com/2010/01/color-theory-for-designers-part-1-the-meaning-of-color) [2](https://99designs.com/blog/tips/color-meanings) [3](https://www.interaction-design.org/literature/topics/color-symbolism)
-
-- Color names for base color? [1](https://louisem.com/29880/color-thesaurus-infographic)
+- More names in different lanuages? [1](https://rgb.to/ral/6038)
 
 It's just a habit of mine: writing down ideas that come to mind while working on a project. I confess that I rarely return to these notes. But now, hopefully, even if you don't have an idea yet, the above notes will help you choose the suitable "feature" and become a contributor to the open-source community.
 
