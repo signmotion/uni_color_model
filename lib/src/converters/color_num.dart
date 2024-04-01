@@ -15,7 +15,7 @@ extension ColorModelConverterNumExt on UniColor<num> {
         group: group,
       );
 
-  List<num?> get argbListNumColor => [channel0, channel1, channel2, channel3];
+  List<num?> get argbListNumBits => [channel0, channel1, channel2, channel3];
 
   RgbInt8Color get rgbInt8Color => RgbInt8Color(
         channelPresentation: channelPresentation,
@@ -30,5 +30,5 @@ extension ColorModelConverterNumExt on UniColor<num> {
         group: group,
       );
 
-  List<num> get rgbListNumColor => [channel1, channel2, channel3];
+  List<num> get rgbListNumBits => [channel1, channel2, channel3];
 }

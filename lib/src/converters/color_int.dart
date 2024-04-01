@@ -10,7 +10,7 @@ extension ColorModelConverterColorInt8Ext on UniColor<int> {
       );
 
   /// ! Adds `0xff` if an alpha is empty (the int less than 24 bits).
-  List<int> get argbListInt8Color => [
+  List<int> get argbListIntBits => [
         channel0 ?? 0xff,
         channel1,
         channel2,
@@ -30,5 +30,5 @@ extension ColorModelConverterColorInt8Ext on UniColor<int> {
         group: group,
       );
 
-  List<int> get rgbListInt8Color => [channel1, channel2, channel3];
+  List<int> get rgbListIntBits => [channel1, channel2, channel3];
 }

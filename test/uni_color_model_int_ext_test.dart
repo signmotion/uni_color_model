@@ -13,11 +13,11 @@ void main() {
     });
 
     test('argbToRgbInt8Color', () {
-      expect(c.argbInt8ToRgbInt8Color, 0xa1b2c3);
+      expect(c.argbInt8ToRgbInt8, 0xa1b2c3);
     });
 
     test('argbInt8ToArgbListInt8Color', () {
-      expect(c.argbInt8ToArgbListInt8Color, [0xff, 0xa1, 0xb2, 0xc3]);
+      expect(c.argbInt8ToArgbInt8ListIntBits, [0xff, 0xa1, 0xb2, 0xc3]);
     });
 
     test('argbInt8ToRgbListInt8Color', () {

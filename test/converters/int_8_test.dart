@@ -17,15 +17,15 @@ void main() {
     });
 
     test('argbInt8ToArgbListInt8Color', () {
-      expect(c.argbInt8ToArgbListInt8Color, [0x00, 0x0a, 0x1b, 0x2c]);
+      expect(c.argbInt8ToArgbInt8ListIntBits, [0x00, 0x0a, 0x1b, 0x2c]);
     });
 
     test('argbInt8ToArgbStringHexInt8Color', () {
-      expect(c.argbInt8ToArgbStringHexInt8Color, '000a1b2c');
+      expect(c.argbInt8ToArgbInt8StringIntHex, '000a1b2c');
     });
 
     test('argbInt8ToRgbStringHexInt8Color', () {
-      expect(c.argbInt8ToRgbStringHexInt8Color, '0a1b2c');
+      expect(c.argbInt8ToRgbInt8StringIntHex, '0a1b2c');
     });
 
     test('rgbInt8Color', () {
@@ -38,12 +38,16 @@ void main() {
           ));
     });
 
-    test('rgbInt8ToRgbListInt8Color', () {
-      expect(c.rgbInt8ToRgbListInt8Color, [0x0a, 0x1b, 0x2c]);
+    test('rgbInt8ToArgbListInt8Color', () {
+      expect(c.rgbInt8ToArgbInt8ListIntBits, [0xff, 0x0a, 0x1b, 0x2c]);
+    });
+
+    test('rgbInt8ToArgbStringHexInt8Color', () {
+      expect(c.rgbInt8ToArgbInt8StringIntHex, 'ff0a1b2c');
     });
 
     test('rgbInt8ToRgbStringHexInt8Color', () {
-      expect(c.rgbInt8ToRgbStringHexInt8Color, '0a1b2c');
+      expect(c.rgbInt8ToRgbInt8StringIntHex, '0a1b2c');
     });
   });
 }
