@@ -16,6 +16,18 @@ void main() {
           ));
     });
 
+    test('argbInt8ToArgbListInt8Color', () {
+      expect(c.argbInt8ToArgbListInt8Color, [0x00, 0x0a, 0x1b, 0x2c]);
+    });
+
+    test('argbInt8ToArgbStringHexInt8Color', () {
+      expect(c.argbInt8ToArgbStringHexInt8Color, '000a1b2c');
+    });
+
+    test('argbInt8ToRgbStringHexInt8Color', () {
+      expect(c.argbInt8ToRgbStringHexInt8Color, '0a1b2c');
+    });
+
     test('rgbInt8Color', () {
       expect(
           c.rgbInt8Color,
@@ -24,6 +36,14 @@ void main() {
             channel2: 0x1b,
             channel3: 0x2c,
           ));
+    });
+
+    test('rgbInt8ToRgbListInt8Color', () {
+      expect(c.rgbInt8ToRgbListInt8Color, [0x0a, 0x1b, 0x2c]);
+    });
+
+    test('rgbInt8ToRgbStringHexInt8Color', () {
+      expect(c.rgbInt8ToRgbStringHexInt8Color, '0a1b2c');
     });
   });
 }

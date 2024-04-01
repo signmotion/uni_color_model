@@ -5,8 +5,10 @@ import 'dart:math';
 import 'package:collection/collection.dart';
 import 'package:wfile/wfile.dart';
 
-part 'src/converters/int_8.dart';
+part 'src/converters/color_int.dart';
 part 'src/converters/color_num.dart';
+part 'src/converters/double.dart';
+part 'src/converters/int_8.dart';
 
 part 'src/extensions/double.dart';
 part 'src/extensions/int.dart';

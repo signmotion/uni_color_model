@@ -1,6 +1,18 @@
 part of '../../uni_color_model.dart';
 
 extension ColorModelInt8Ext on int {
+  /// `true` then [int8Channel0Color] is not zero.
+  bool get hasInt8Channel0Color => int8Channel0Color > 0;
+
+  /// `true` then [int8Channel1Color] is not zero.
+  bool get hasInt8Channel1Color => int8Channel1Color > 0;
+
+  /// `true` then [int8Channel2Color] is not zero.
+  bool get hasInt8Channel2Color => int8Channel2Color > 0;
+
+  /// `true` then [int8Channel3Color] is not zero.
+  bool get hasInt8Channel3Color => int8Channel3Color > 0;
+
   /// The zero (alpha in ARGB model) channel of this color in an 8 bit value.
   int get int8Channel0Color => (0xff000000 & this) >> 24;
 

@@ -9,7 +9,11 @@ class ArgbInt8Color extends Int8Color {
     required super.channel2,
     required super.channel3,
     super.index,
+    super.code,
+    super.defaultLanguage,
     super.name,
+    super.names,
+    super.group,
   }) : super(
           model: ColorModel.rgb,
         );
