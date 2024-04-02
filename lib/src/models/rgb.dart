@@ -14,7 +14,7 @@ abstract class RgbColor {
   /// [int] presentation.
   int get int24;
 
-  /// [int] presentation.
+  /// [String] presentation.
   String get int24Hex;
 }
 
@@ -37,7 +37,7 @@ mixin RgbInt8ColorMix on RgbIntColorMix implements RgbColor {
   @override
   int get int24 => (0xff & r) << 16 | (0xff & g) << 8 | (0xff & b) << 0;
 
-  /// [int] presentation.
+  /// [String] presentation.
   @override
   String get int24Hex => int24.int8Channels123HexColor;
 

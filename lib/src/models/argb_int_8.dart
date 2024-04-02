@@ -16,6 +16,7 @@ class ArgbInt8Color extends Int8Color {
     super.group,
   }) : super(
           model: ColorModel.rgb,
+          channel4: 0,
         );
 
   factory ArgbInt8Color.argb(int? a, int r, int g, int b) =>

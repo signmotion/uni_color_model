@@ -11,6 +11,7 @@ class Int10Color extends NumColor<int> {
     required super.channel1,
     required super.channel2,
     required super.channel3,
+    required super.channel4,
     super.index,
     super.code,
     super.defaultLanguage,
@@ -18,8 +19,9 @@ class Int10Color extends NumColor<int> {
     super.names,
     super.group,
   }) : super(
-          channelDepths: const [10, 10, 10, 10],
+          channelDepths: const [10, 10, 10, 10, 10],
           channelRanges: const [
+            (0, 1023),
             (0, 1023),
             (0, 1023),
             (0, 1023),

@@ -11,6 +11,7 @@ class Int8Color extends NumColor<int> {
     required super.channel1,
     required super.channel2,
     required super.channel3,
+    required super.channel4,
     super.index,
     super.code,
     super.defaultLanguage,
@@ -18,8 +19,9 @@ class Int8Color extends NumColor<int> {
     super.names,
     super.group,
   }) : super(
-          channelDepths: const [8, 8, 8, 8],
+          channelDepths: const [8, 8, 8, 8, 8],
           channelRanges: const [
+            (0, 255),
             (0, 255),
             (0, 255),
             (0, 255),

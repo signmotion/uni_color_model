@@ -13,13 +13,16 @@ class UniColor<T> implements Comparable<UniColor<T>> {
     required this.channel1,
     required this.channel2,
     required this.channel3,
+    required this.channel4,
     this.index,
     this.code = '',
     this.defaultLanguage = 'en',
     String? name,
     Names? names,
     this.group = '',
-  })  : _name = name,
+  })  : assert(channelDepths.length == 5),
+        assert(channelRanges.length == 5),
+        _name = name,
         _names = names;
 
   /// Bits per channels including [channel0].
@@ -42,6 +45,7 @@ class UniColor<T> implements Comparable<UniColor<T>> {
   final T channel1;
   final T channel2;
   final T channel3;
+  final T channel4;
 
   /// Some colors have an index.
   final int? index;
@@ -92,16 +96,21 @@ class UniColor<T> implements Comparable<UniColor<T>> {
   bool equalChannel2(UniColor<T> b, {int decimals = -1}) =>
       channel2 == b.channel2;
 
-  /// `true` when [channel2]s are equal.
+  /// `true` when [channel3]s are equal.
   bool equalChannel3(UniColor<T> b, {int decimals = -1}) =>
       channel3 == b.channel3;
+
+  /// `true` when [channel4]s are equal.
+  bool equalChannel4(UniColor<T> b, {int decimals = -1}) =>
+      channel4 == b.channel4;
 
   /// `true` when all channels are equal.
   bool equalChannels(UniColor<T> b, {int decimals = -1}) =>
       equalChannel0(b, decimals: decimals) &&
       equalChannel1(b, decimals: decimals) &&
       equalChannel2(b, decimals: decimals) &&
-      equalChannel3(b, decimals: decimals);
+      equalChannel3(b, decimals: decimals) &&
+      equalChannel4(b, decimals: decimals);
 
   bool sameModel(UniColor<T> b) => model == b.model;
 
@@ -127,7 +136,7 @@ class UniColor<T> implements Comparable<UniColor<T>> {
       ' $channelRanges'
       ' $model'
       ' $channelPresentation'
-      ' $channel0:$channel1:$channel2:$channel3'
+      ' $channel0:$channel1:$channel2:$channel3:$channel4'
       ' $index'
       ' `$code`'
       ' `$name`'
@@ -144,6 +153,7 @@ class UniColor<T> implements Comparable<UniColor<T>> {
         channel1,
         channel2,
         channel3,
+        channel4,
         index,
         code,
         name,

@@ -12,7 +12,7 @@ void main() {
     test('argbInt8Color', () {
       expect(
           c.argbInt8Color,
-          const ArgbInt8Color(
+          ArgbInt8Color(
             channel0: 0xff,
             channel1: 0x0a,
             channel2: 0x1b,
@@ -45,7 +45,7 @@ void main() {
     test('rgbInt8Color', () {
       expect(
           c.rgbInt8Color,
-          const RgbInt8Color(
+          RgbInt8Color(
             channel1: 0x0a,
             channel2: 0x1b,
             channel3: 0x2c,

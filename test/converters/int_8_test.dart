@@ -13,7 +13,7 @@ void main() {
     test('argbInt8ToArgbInt8Color', () {
       expect(
           b.argbInt8ToArgbInt8Color,
-          const ArgbInt8Color(
+          ArgbInt8Color(
             channel0: 0x00,
             channel1: 0x0a,
             channel2: 0x1b,
@@ -59,7 +59,7 @@ void main() {
     test('rgbInt8ToArgbInt8Color', () {
       expect(
           b.rgbInt8ToArgbInt8Color,
-          const ArgbInt8Color(
+          ArgbInt8Color(
             channel0: 0xff,
             channel1: 0x0a,
             channel2: 0x1b,
@@ -87,7 +87,7 @@ void main() {
     test('rgbInt8ToRgbInt8Color', () {
       expect(
           b.rgbInt8ToRgbInt8Color,
-          const RgbInt8Color(
+          RgbInt8Color(
             channel1: 0x0a,
             channel2: 0x1b,
             channel3: 0x2c,

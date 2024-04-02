@@ -11,6 +11,7 @@ class NumColor<T extends num> extends UniColor<T> {
     required super.channel1,
     required super.channel2,
     required super.channel3,
+    required super.channel4,
     super.index,
     super.code,
     super.defaultLanguage,
@@ -28,6 +29,7 @@ class NumColor<T extends num> extends UniColor<T> {
       channel1: (channel1 - b.channel1) as T,
       channel2: (channel2 - b.channel2) as T,
       channel3: (channel3 - b.channel3) as T,
+      channel4: (channel4 - b.channel4) as T,
     );
   }
 
@@ -37,10 +39,12 @@ class NumColor<T extends num> extends UniColor<T> {
         channel1: (channel1 * channel1) as T,
         channel2: (channel2 * channel2) as T,
         channel3: (channel3 * channel3) as T,
+        channel4: (channel4 * channel4) as T,
       );
 
   /// Summarize channels: `channel0 + channel1 + ...`.
-  T get summarize => ((channel0 ?? 0) + channel1 + channel2 + channel3) as T;
+  T get summarize =>
+      ((channel0 ?? 0) + channel1 + channel2 + channel3 + channel4) as T;
 
   NumColor<T> copyWith({
     List<int>? channelDepths,
@@ -51,6 +55,7 @@ class NumColor<T extends num> extends UniColor<T> {
     T? channel1,
     T? channel2,
     T? channel3,
+    T? channel4,
     int? index,
     String? code,
     String? defaultLanguage,
@@ -67,6 +72,7 @@ class NumColor<T extends num> extends UniColor<T> {
         channel1: channel1 ?? this.channel1,
         channel2: channel2 ?? this.channel2,
         channel3: channel3 ?? this.channel3,
+        channel4: channel4 ?? this.channel4,
         index: index ?? this.index,
         code: code ?? this.code,
         defaultLanguage: defaultLanguage ?? this.defaultLanguage,
@@ -93,9 +99,15 @@ class NumColor<T extends num> extends UniColor<T> {
       .toDouble()
       .equalWithDecimals(b.channel2.toDouble(), decimals: decimals);
 
-  /// `true` when [channel2]s are equal.
+  /// `true` when [channel3]s are equal.
   @override
   bool equalChannel3(UniColor<T> b, {int decimals = -1}) => channel3
       .toDouble()
       .equalWithDecimals(b.channel3.toDouble(), decimals: decimals);
+
+  /// `true` when [channel4]s are equal.
+  @override
+  bool equalChannel4(UniColor<T> b, {int decimals = -1}) => channel4
+      .toDouble()
+      .equalWithDecimals(b.channel4.toDouble(), decimals: decimals);
 }

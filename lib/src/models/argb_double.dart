@@ -9,8 +9,13 @@ class ArgbDoubleColor extends DoubleColor {
     required super.channel2,
     required super.channel3,
     super.index,
+    super.code,
+    super.defaultLanguage,
     super.name,
+    super.names,
+    super.group,
   }) : super(
           model: ColorModel.rgb,
+          channel4: 0,
         );
 }

@@ -9,6 +9,7 @@ class DoubleColor extends NumColor<double> {
       (0.0, 1.0),
       (0.0, 1.0),
       (0.0, 1.0),
+      (0.0, 1.0),
     ],
     required super.model,
     super.channelPresentation,
@@ -16,6 +17,7 @@ class DoubleColor extends NumColor<double> {
     required super.channel1,
     required super.channel2,
     required super.channel3,
+    required super.channel4,
     super.index,
     super.code,
     super.defaultLanguage,
@@ -24,6 +26,6 @@ class DoubleColor extends NumColor<double> {
     super.group,
   }) : super(
           // pointlessly for [double]
-          channelDepths: const [0, 0, 0, 0],
+          channelDepths: const [0, 0, 0, 0, 0],
         );
 }

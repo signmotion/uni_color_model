@@ -17,6 +17,7 @@ class RgbInt8Color extends Int8Color
     super.group,
   }) : super(
           model: ColorModel.rgb,
+          channel4: 0,
         );
 
   factory RgbInt8Color.rgb(int r, int g, int b) =>

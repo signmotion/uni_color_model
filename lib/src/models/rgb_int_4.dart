@@ -15,5 +15,6 @@ class RgbInt4Color extends Int4Color {
     super.group,
   }) : super(
           model: ColorModel.rgb,
+          channel4: 0,
         );
 }
