@@ -5,11 +5,10 @@ extension ColorModelConverterColorNumExt<T extends num> on UniColor<T> {
   /// ARGB
   /// ! Adds `0xff` to alpha.
   int get argbInt8 =>
-      ((0xff & (channel0?.round() ?? 0xff)) << 24 |
-          (0xff & channel1.round()) << 16 |
-          (0xff & channel2.round()) << 8 |
-          (0xff & channel3.round()) << 0) &
-      0xffffffff;
+      (0xff & (channel0?.round() ?? 0xff)) << 24 |
+      (0xff & channel1.round()) << 16 |
+      (0xff & channel2.round()) << 8 |
+      (0xff & channel3.round()) << 0;
 
   /// ! Adds `0xff` to alpha.
   ArgbInt8Color get argbInt8Color => ArgbInt8Color(
@@ -38,10 +37,9 @@ extension ColorModelConverterColorNumExt<T extends num> on UniColor<T> {
 
   /// RGB
   int get rgbInt8 =>
-      ((0xff & channel1.round()) << 16 |
-          (0xff & channel2.round()) << 8 |
-          (0xff & channel3.round()) << 0) &
-      0xffffff;
+      (0xff & channel1.round()) << 16 |
+      (0xff & channel2.round()) << 8 |
+      (0xff & channel3.round()) << 0;
 
   RgbInt8Color get rgbInt8Color => RgbInt8Color(
         channelPresentation: channelPresentation,
@@ -56,7 +54,11 @@ extension ColorModelConverterColorNumExt<T extends num> on UniColor<T> {
         group: group,
       );
 
-  String get rgbInt8StringIntHex => rgbInt8.rgbInt8ToRgbInt8StringIntHex;
+  List<T> get rgbInt8ListIntBits => [
+        channel1,
+        channel2,
+        channel3,
+      ];
 
-  List<T> get rgbNumListNumBits => [channel1, channel2, channel3];
+  String get rgbInt8StringIntHex => rgbInt8Color.int24Hex;
 }
