@@ -31,13 +31,13 @@ void main() {
     });
 
     test('2 colors', () {
-      final palette = UniPalette<int>.file(
+      final palette = UniPalette<num>.file(
         'test/data/palettes/black_white.json',
         ColorModel.rgb,
       );
       expect(palette.count, 2);
-      expect(palette.list.first.rgbInt8Color.int24Hex, '000000');
-      expect(palette.list.last.rgbInt8Color.int24Hex, 'ffffff');
+      expect(palette.list.first.rgbInt8StringIntHex, '000000');
+      expect(palette.list.last.rgbInt8StringIntHex, 'ffffff');
     });
 
     test('grey_0_255', () {
