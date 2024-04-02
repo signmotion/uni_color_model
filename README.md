@@ -90,14 +90,14 @@ The formulas for color conversion are easily programmable, but we have many conv
 - `acmykInt8Color`, `acmykInt8Color`, ...
 - ...
 
-#### Structures `int bits`
+#### Structure `int bits`
 
 - `0x0a1b2c`
 - `0xff0a1b2c` with alpha
 - `0xabc == 0xaabbcc`
 - `0xa == 0xaaaaaa`
 
-#### Structures `String<int hex>`
+#### Structure `String<int hex>`
 
 Case insensetivity.
 
@@ -108,19 +108,25 @@ Spaces between channels are allowed.
 - `'#abc' == 'a b c' == 'aabbcc'`
 - `'#a' == 'aaaaaa'`
 
-#### Structures `String<int dec>`
+#### Structure `String<int dec>`
+
+Included to TODO below.
 
 - `'12 134 205'`
 - `'255 12 134 205'`
 - `'120' == '120 120 120'`
 
-#### Structures `String<percent double>`
+#### Structure `String<percent double>`
+
+Included to TODO below.
 
 - `'0.12 0.134 0.205'`
 - `'1.0 0.12 0.134 0.205'`
 - `'0.120' == '0.12 0.12 0.12'`
 
-#### Structures `percent<int>`
+#### Structure `percent<int>`
+
+Included to TODO below.
 
 - `'12% 13% 95%'`
 - `'100% 12% 13% 95%'`
@@ -219,6 +225,10 @@ Once you start using the **UniColorModel**, it will become easy to choose the fu
 - Feautures for this package into `README`.
 
 - Dependency to `collection` package. We can do without.
+
+- Structures `String<int dec>`.
+- Structures `String<percent double>`.
+- Structure `percent<int>`.
 
 - Check out the Web platform.
 - Converters between models. See [1](https://pub.dev/packages/color_models), [2](https://dev.to/bytebodger/determining-the-rgb-distance-between-two-colors-4n91), [3](https://github.com/MichaelFenwick/Color).
