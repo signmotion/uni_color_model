@@ -1,6 +1,6 @@
 part of '../../uni_color_model.dart';
 
-/// Converters for [int] 8 bits.
+/// Converters for [int] 8.
 extension ColorModelConverterInt8Ext on int {
   /// ARGB
   int get argbInt8 => this & 0xffffffff;
