@@ -67,7 +67,6 @@ class UniColor<T> implements Comparable<UniColor<T>> {
 
   bool get hasName => names.map.isNotEmpty;
 
-  /// TODO(sign): optimize fine Provide [copyWith] for all operators.
   @override
   bool operator ==(Object other) =>
       other is UniColor<T> &&

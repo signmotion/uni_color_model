@@ -19,46 +19,61 @@ class NumColor<T extends num> extends UniColor<T> {
     super.group,
   });
 
-  /// Subtract channels.
+  /// Subtract channels: `channelN - channelN`.
   NumColor<T> operator -(UniColor<T> b) {
     assertSameModel(b);
     assertArgbModel();
-    return NumColor(
-      channelDepths: channelDepths,
-      channelRanges: channelRanges,
-      model: model,
-      channelPresentation: channelPresentation,
+    return copyWith(
       channel0: ((channel0 ?? 0) - (b.channel0 ?? 0)) as T,
       channel1: (channel1 - b.channel1) as T,
       channel2: (channel2 - b.channel2) as T,
       channel3: (channel3 - b.channel3) as T,
-      index: index,
-      code: code,
-      defaultLanguage: defaultLanguage,
-      name: name,
-      names: names,
-      group: group,
     );
   }
 
-  NumColor<T> get square => NumColor(
-        channelDepths: channelDepths,
-        channelRanges: channelRanges,
-        model: model,
-        channelPresentation: channelPresentation,
+  /// Channel multiplication: `channelN * channelN`.
+  NumColor<T> get square => copyWith(
         channel0: ((channel0 ?? 0) * (channel0 ?? 0)) as T,
         channel1: (channel1 * channel1) as T,
         channel2: (channel2 * channel2) as T,
         channel3: (channel3 * channel3) as T,
-        index: index,
-        code: code,
-        defaultLanguage: defaultLanguage,
-        name: name,
-        names: names,
-        group: group,
       );
 
+  /// Summarize channels: `channel0 + channel1 + ...`.
   T get summarize => ((channel0 ?? 0) + channel1 + channel2 + channel3) as T;
+
+  NumColor<T> copyWith({
+    List<int>? channelDepths,
+    List<(T, T)>? channelRanges,
+    ColorModel? model,
+    ColorChannelPresentation? channelPresentation,
+    T? channel0,
+    T? channel1,
+    T? channel2,
+    T? channel3,
+    int? index,
+    String? code,
+    String? defaultLanguage,
+    String? name,
+    Names? names,
+    String? group,
+  }) =>
+      NumColor(
+        channelDepths: channelDepths ?? this.channelDepths,
+        channelRanges: channelRanges ?? this.channelRanges,
+        model: model ?? this.model,
+        channelPresentation: channelPresentation ?? this.channelPresentation,
+        channel0: channel0 ?? this.channel0,
+        channel1: channel1 ?? this.channel1,
+        channel2: channel2 ?? this.channel2,
+        channel3: channel3 ?? this.channel3,
+        index: index ?? this.index,
+        code: code ?? this.code,
+        defaultLanguage: defaultLanguage ?? this.defaultLanguage,
+        name: name ?? this.name,
+        names: names ?? this.names,
+        group: group ?? this.group,
+      );
 
   /// `true` when [channel0]s are equal.
   @override
