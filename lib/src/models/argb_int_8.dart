@@ -19,6 +19,6 @@ class ArgbInt8Color extends Int8Color {
           channel4: 0,
         );
 
-  factory ArgbInt8Color.argb(int? a, int r, int g, int b) =>
+  factory ArgbInt8Color.argb(int a, int r, int g, int b) =>
       ArgbInt8Color(channel0: a, channel1: r, channel2: g, channel3: b);
 }
