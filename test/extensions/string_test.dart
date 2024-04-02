@@ -79,5 +79,5 @@ void main() {
       expect(''.normalizedNameColor, '');
       expect('  '.normalizedNameColor, '');
     });
-  }, tags: ['current']);
+  });
 }
