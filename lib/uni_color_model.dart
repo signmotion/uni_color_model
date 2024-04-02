@@ -7,6 +7,7 @@ import 'package:wfile/wfile.dart';
 
 part 'src/converters/color_num.dart';
 part 'src/converters/double.dart';
+part 'src/converters/int_8_string_int_hex.dart';
 part 'src/converters/int_8.dart';
 part 'src/converters/rgb_int_8_color.dart';
 

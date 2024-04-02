@@ -1,5 +1,7 @@
 part of '../../uni_color_model.dart';
 
+/// [double] doesn't know about the color representation:
+/// the extension name interprets it.
 extension ColorModelDoubleExt on double {
   static const defaultZeroValue = 0.0001;
 

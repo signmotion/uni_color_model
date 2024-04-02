@@ -4,15 +4,15 @@ import 'package:test/test.dart';
 void main() {
   // no alpha
   const b = '0a1b2c';
-  const c = '#0a1b2c';
-  const d = '0a 1b 2c';
-  const e = ' 0a    1b  2c        ';
+  // TODO(sign): const c = '#0a1b2c';
+  // TODO(sign): const d = '0a 1b 2c';
+  // TODO(sign): const e = ' 0a    1b  2c        ';
 
   // with alpha
-  const ab = 'de0a1b2c';
-  const ac = '#de0a1b2c';
-  const ad = 'de 0a 1b 2c';
-  const ae = ' de  0a    1b  2c      ';
+  // TODO(sign): const ab = 'de0a1b2c';
+  // TODO(sign): const ac = '#de0a1b2c';
+  // TODO(sign): const ad = 'de 0a 1b 2c';
+  // TODO(sign): const ae = ' de  0a    1b  2c      ';
 
   group('No alpha', () {
     test('int8Channel0Color', () {
@@ -34,7 +34,19 @@ void main() {
     test('int8Channel4Color', () {
       expect(b.int8Channel4Color, -1);
     });
-  }, tags: ['current']);
+
+    test('isArgbInt8HexColor', () {
+      expect(b.isArgbInt8HexColor, isFalse);
+    });
+
+    test('isRgbInt8HexColor', () {
+      expect(b.isRgbInt8HexColor, isTrue);
+    });
+
+    test('isInt8HexColor', () {
+      expect(b.isInt8HexColor, isTrue);
+    });
+  });
 
   group('normalizedNameColor', () {
     test('latin, lowercase, no spaces', () {
@@ -55,7 +67,7 @@ void main() {
       expect('Forrest + Green'.normalizedNameColor, 'forrestgreen');
       expect('Forrest _ Green'.normalizedNameColor, 'forrestgreen');
       expect('Forrest_Green'.normalizedNameColor, 'forrestgreen');
-      expect('F*rrest | Green'.normalizedNameColor, 'forrestgreen');
+      expect('F*rrest | Green'.normalizedNameColor, 'frrestgreen');
     });
 
     test('hex digits, anycase, spaces, special symbols', () {
@@ -67,5 +79,5 @@ void main() {
       expect(''.normalizedNameColor, '');
       expect('  '.normalizedNameColor, '');
     });
-  });
+  }, tags: ['current']);
 }
