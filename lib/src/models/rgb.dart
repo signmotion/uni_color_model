@@ -18,22 +18,27 @@ abstract class RgbColor {
   String get int24Hex;
 }
 
-mixin RgbIntColorMix on UniColor<int> {
+mixin RgbIntColorMix on UniColor<int> implements RgbColor {
   /// Red channel.
+  @override
   int get r => channel1;
 
   /// Green channel.
+  @override
   int get g => channel2;
 
   /// Blue channel.
+  @override
   int get b => channel3;
 }
 
-mixin RgbInt8ColorMix on RgbIntColorMix {
+mixin RgbInt8ColorMix on RgbIntColorMix implements RgbColor {
   /// [int] presentation.
+  @override
   int get int24 => (0xff & r) << 16 | (0xff & g) << 8 | (0xff & b) << 0;
 
   /// [int] presentation.
+  @override
   String get int24Hex => int24.int8Channels123HexColor;
 
   @override
