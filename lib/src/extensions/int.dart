@@ -25,11 +25,17 @@ extension ColorModelInt8Ext on int {
   /// The third (blue in ARGB model) channel of this color in an 8 bit value.
   int get int8Channel3Color => (0x000000ff & this) >> 0;
 
+  /// For example, ARGB.
+  int get int8Channels0123 => this & 0xffffffff;
+
   /// For example, RGB.
-  String get int8Channels123HexColor => (this & 0xffffff).hex(6);
+  int get int8Channels123 => this & 0xffffff;
 
   /// For example, ARGB.
-  String get int8Channels0123HexColor => (this & 0xffffffff).hex(8);
+  String get int8Channels0123HexColor => int8Channels0123.hex(8);
+
+  /// For example, RGB.
+  String get int8Channels123HexColor => int8Channels123.hex(6);
 
   /// Converts to hexadecimal [String] value with [n] padding left zeroes.
   String hex([int n = 2]) => toRadixString(16).padLeft(n, '0');

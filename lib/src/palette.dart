@@ -57,8 +57,8 @@ class UniPalette<T> {
           ' We have: ${iterable.length} $iterable');
     }
 
-    final list =
-        [for (final v in iterable) v.argbInt8Color] as List<UniColor<T>>;
+    final list = [for (final v in iterable) v.argbInt8ToArgbInt8Color]
+        as List<UniColor<T>>;
 
     return UniPalette(list);
   }

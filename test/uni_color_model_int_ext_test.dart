@@ -21,7 +21,7 @@ void main() {
     });
 
     test('argbInt8ToRgbListInt8Color', () {
-      expect(c.argbInt8ToRgbListInt8Color, [0xa1, 0xb2, 0xc3]);
+      expect(c.argbInt8ToRgbInt8ListIntBits, [0xa1, 0xb2, 0xc3]);
     });
   });
 }
