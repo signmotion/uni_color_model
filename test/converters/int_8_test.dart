@@ -5,7 +5,7 @@ void main() {
   // TODO(sign): const a = 0xde0a1b2c;
   const b = 0x0a1b2c;
 
-  group('ARGB int 8 -> ...', () {
+  group('ARGB int 8 -> ARGB int 8', () {
     test('argbInt8', () {
       expect(b.argbInt8, 0x0a1b2c);
     });
@@ -33,7 +33,9 @@ void main() {
     test('argbInt8ToArgbInt8StringIntHex', () {
       expect(b.argbInt8ToArgbInt8StringIntHex, '000a1b2c');
     });
+  });
 
+  group('ARGB int 8 -> RGB int 8', () {
     test('argbInt8ToRgbInt8', () {
       expect(b.argbInt8ToRgbInt8, 0x0a1b2c);
     });
@@ -51,11 +53,7 @@ void main() {
     });
   });
 
-  group('RGB int 8 -> ...', () {
-    test('rgbInt8', () {
-      expect(b.rgbInt8, 0x0a1b2c);
-    });
-
+  group('RGB int 8 -> ARGB int 8', () {
     test('rgbInt8ToArgbInt8Color', () {
       expect(
           b.rgbInt8ToArgbInt8Color,
@@ -82,6 +80,12 @@ void main() {
 
     test('rgbInt8ToArgbInt8StringIntHex', () {
       expect(b.rgbInt8ToArgbInt8StringIntHex, 'ff0a1b2c');
+    });
+  });
+
+  group('RGB int 8 -> RGB int 8', () {
+    test('rgbInt8', () {
+      expect(b.rgbInt8, 0x0a1b2c);
     });
 
     test('rgbInt8ToRgbInt8Color', () {
