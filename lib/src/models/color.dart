@@ -66,61 +66,17 @@ class UniColor<T> implements Comparable<UniColor<T>> {
   bool get hasName => names.map.isNotEmpty;
 
   @override
-  bool operator ==(Object other) {
-    // =>
-    // other is UniColor<T> &&
-    // channelDepths == other.channelDepths &&
-    // channelRanges == other.channelRanges &&
-    // model == other.model &&
-    // channelPresentation == other.channelPresentation &&
-    // equalChannels(other) &&
-    // index == other.index &&
-    // code == other.code &&
-    // name == other.name &&
-    // group == other.group;
-
-    if (other is! UniColor<T>) {
-      return false;
-    }
-
-    if (channelDepths != other.channelDepths) {
-      return false;
-    }
-
-    if (channelRanges != other.channelRanges) {
-      return false;
-    }
-
-    if (model != other.model) {
-      return false;
-    }
-
-    if (channelPresentation != other.channelPresentation) {
-      return false;
-    }
-
-    if (!equalChannels(other)) {
-      return false;
-    }
-
-    if (index != other.index) {
-      return false;
-    }
-
-    if (code != other.code) {
-      return false;
-    }
-
-    if (name != other.name) {
-      return false;
-    }
-
-    if (group != other.group) {
-      return false;
-    }
-
-    return true;
-  }
+  bool operator ==(Object other) =>
+      other is UniColor<T> &&
+      channelDepths == other.channelDepths &&
+      channelRanges == other.channelRanges &&
+      model == other.model &&
+      channelPresentation == other.channelPresentation &&
+      equalChannels(other) &&
+      index == other.index &&
+      code == other.code &&
+      name == other.name &&
+      group == other.group;
 
   /// `true` when a channels [n] are equal.
   bool equalChannelN(int n, UniColor<T> b, {int decimals = -1}) =>
