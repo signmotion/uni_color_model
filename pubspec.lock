@@ -93,10 +93,10 @@ packages:
     dependency: transitive
     description:
       name: frontend_server_client
-      sha256: "408e3ca148b31c20282ad6f37ebfa6f4bdc8fede5b74bc2f08d9d92b55db3612"
+      sha256: f64a0333a82f30b0cca061bc3d143813a486dc086b574bfb233b7c1372427694
       url: "https://pub.dev"
     source: hosted
-    version: "3.2.0"
+    version: "4.0.0"
   glob:
     dependency: transitive
     description:
@@ -421,10 +421,10 @@ packages:
     dependency: "direct main"
     description:
       name: wfile
-      sha256: "2be73888b0c625426947c90fa8b54f7dc7e6e031673c6baea1de8a17b890e93f"
+      sha256: "839cb75d3402549e89e73afd436e0158968dc43dc3ebf9e9a51fd12f12c16cfe"
       url: "https://pub.dev"
     source: hosted
-    version: "0.4.1"
+    version: "0.4.2"
   xml:
     dependency: transitive
     description:
