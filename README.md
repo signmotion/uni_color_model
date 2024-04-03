@@ -23,17 +23,17 @@ When you need to determine the color value by name or vice versa, refer to the p
 
 If you're looking for a structured color palette, look at [UniColorPalette](https://github.com/signmotion/uni_color_palette).
 
+Share some ❤️ and star repo to support the project.
+
 [<img src="https://raw.githubusercontent.com/signmotion/uni_color_model/master/images/dependencies.webp"/>](https://raw.githubusercontent.com/signmotion/uni_color_model/master/images/dependencies.webp)
 
-| Android | iOS | Linux | MacOS | Web | Windows |              |
-| :-----: | :-: | :---: | :---: | :-: | :-----: | :----------- |
-|   ✅    | ✅  |  ✅   |  ✅   |  ✘  |   ✅    | **platform** |
+| Android | iOS | Linux | MacOS | Windows |              |
+| :-----: | :-: | :---: | :---: | :-----: | :----------- |
+|   ✅    | ✅  |  ✅   |  ✅   |   ✅    | **platform** |
 
 | Dart | Flutter |         |
 | :--: | :-----: | :------ |
 |  ✅  |   ✅    | **SDK** |
-
-Share some ❤️ and star repo to support the project.
 
 ## Usage
 
