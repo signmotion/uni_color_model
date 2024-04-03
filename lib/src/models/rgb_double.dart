@@ -2,12 +2,12 @@ part of '../../uni_color_model.dart';
 
 /// RGB double model of color.
 class RgbDoubleColor extends DoubleColor {
-  const RgbDoubleColor({
+  RgbDoubleColor({
     super.channelRanges,
     super.channelPresentation,
-    required super.channel1,
-    required super.channel2,
-    required super.channel3,
+    required double red,
+    required double green,
+    required double blue,
     super.index,
     super.code,
     super.defaultLanguage,
@@ -15,8 +15,8 @@ class RgbDoubleColor extends DoubleColor {
     super.names,
     super.group,
   }) : super(
-          channel0: 1.0,
-          channel4: 0.0,
+          hasAlpha: false,
           model: ColorModel.rgb,
+          channels: [0, 0, red, green, blue],
         );
 }

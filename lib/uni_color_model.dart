@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:collection/collection.dart';
 import 'package:wfile/wfile.dart';
 
+part 'src/constructors/num_color_num.dart';
 part 'src/constructors/int.dart';
 
 part 'src/converters/color_num.dart';
@@ -17,6 +18,7 @@ part 'src/extensions/double.dart';
 part 'src/extensions/int_8.dart';
 part 'src/extensions/int.dart';
 part 'src/extensions/list_int_8.dart';
+part 'src/extensions/list_num.dart';
 part 'src/extensions/string.dart';
 part 'src/extensions/uni_color.dart';
 

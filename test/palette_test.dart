@@ -36,8 +36,8 @@ void main() {
         ColorModel.rgb,
       );
       expect(palette.count, 2);
-      expect(palette.list.first.rgbInt8StringIntHex, '000000');
-      expect(palette.list.last.rgbInt8StringIntHex, 'ffffff');
+      expect(palette.list.first.channels, [0x00, 0x00, 0x00, 0x00, 0x00]);
+      expect(palette.list.last.channels, [0x00, 0x00, 0xff, 0xff, 0xff]);
     });
 
     test('grey_0_255', () {

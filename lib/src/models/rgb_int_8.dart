@@ -4,11 +4,11 @@ part of '../../uni_color_model.dart';
 class RgbInt8Color extends Int8Color
     with RgbIntColorMix, RgbInt8ColorMix
     implements RgbColor {
-  const RgbInt8Color({
+  RgbInt8Color({
     super.channelPresentation,
-    required super.channel1,
-    required super.channel2,
-    required super.channel3,
+    required int red,
+    required int green,
+    required int blue,
     super.index,
     super.code,
     super.defaultLanguage,
@@ -16,12 +16,13 @@ class RgbInt8Color extends Int8Color
     super.names,
     super.group,
   }) : super(
+          hasAlpha: false,
           model: ColorModel.rgb,
-          channel4: 0,
+          channels: [0, 0, red, green, blue],
         );
 
   factory RgbInt8Color.rgb(int r, int g, int b) =>
-      RgbInt8Color(channel1: r, channel2: g, channel3: b);
+      RgbInt8Color(red: r, green: g, blue: b);
 
   factory RgbInt8Color.rgbIndexName(
     int r,
@@ -31,15 +32,15 @@ class RgbInt8Color extends Int8Color
     String name,
   ) =>
       RgbInt8Color(
-        channel1: r,
-        channel2: g,
-        channel3: b,
+        red: r,
+        green: g,
+        blue: b,
         index: index,
         name: name,
       );
 
   factory RgbInt8Color.rgbName(int r, int g, int b, String name) =>
-      RgbInt8Color(channel1: r, channel2: g, channel3: b, name: name);
+      RgbInt8Color(red: r, green: g, blue: b, name: name);
 
   factory RgbInt8Color.rgbNames(
     int r,
@@ -48,15 +49,15 @@ class RgbInt8Color extends Int8Color
     Names names,
   ) =>
       RgbInt8Color(
-        channel1: r,
-        channel2: g,
-        channel3: b,
+        red: r,
+        green: g,
+        blue: b,
         names: names,
       );
 
   factory RgbInt8Color.value(int v) => RgbInt8Color(
-        channel1: v.int8Channel0Color,
-        channel2: v.int8Channel1Color,
-        channel3: v.int8Channel2Color,
+        red: v.int8Channel2Color,
+        green: v.int8Channel3Color,
+        blue: v.int8Channel4Color,
       );
 }

@@ -16,27 +16,24 @@ abstract class CmykColor {
 
   /// [int] presentation.
   int get int32;
-
-  /// [String] presentation.
-  String get int32Hex;
 }
 
 mixin CmykIntColorMix on UniColor<int> implements CmykColor {
   /// Cyan channel.
   @override
-  int get c => channel1;
+  int get c => channels[1];
 
   /// Magenta channel.
   @override
-  int get m => channel2;
+  int get m => channels[2];
 
   /// Yellow channel.
   @override
-  int get y => channel3;
+  int get y => channels[3];
 
   /// Black channel.
   @override
-  int get k => channel4;
+  int get k => channels[4];
 }
 
 mixin CmykInt8ColorMix on CmykIntColorMix implements CmykColor {
@@ -44,11 +41,4 @@ mixin CmykInt8ColorMix on CmykIntColorMix implements CmykColor {
   @override
   int get int32 =>
       (0xff & c) << 24 | (0xff & m) << 16 | (0xff & y) << 8 | (0xff & k) << 0;
-
-  /// [String] presentation.
-  @override
-  String get int32Hex => int32.int8Channels1234HexColor;
-
-  @override
-  String toString() => int32Hex;
 }

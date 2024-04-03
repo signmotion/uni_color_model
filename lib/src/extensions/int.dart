@@ -1,7 +1,7 @@
 part of '../../uni_color_model.dart';
 
 /// TODO(sign): Separated package `int_color`?
-extension ColorModelIntNExt on int {
+extension ColorModelIntBitsExt on int {
   /// The zero channel of this color in an N bits value.
   int intBitsChannelNColor(int bits, int n) =>
       this >> (bits * (4 - n - 1)) & fillWithOnesRight(bits);

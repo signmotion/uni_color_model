@@ -13,23 +13,20 @@ abstract class RgbColor {
 
   /// [int] presentation.
   int get int24;
-
-  /// [String] presentation.
-  String get int24Hex;
 }
 
 mixin RgbIntColorMix on UniColor<int> implements RgbColor {
   /// Red channel.
   @override
-  int get r => channel1;
+  int get r => channels[2];
 
   /// Green channel.
   @override
-  int get g => channel2;
+  int get g => channels[3];
 
   /// Blue channel.
   @override
-  int get b => channel3;
+  int get b => channels[4];
 }
 
 mixin RgbInt8ColorMix on RgbIntColorMix implements RgbColor {
@@ -37,10 +34,6 @@ mixin RgbInt8ColorMix on RgbIntColorMix implements RgbColor {
   @override
   int get int24 => (0xff & r) << 16 | (0xff & g) << 8 | (0xff & b) << 0;
 
-  /// [String] presentation.
   @override
-  String get int24Hex => int24.int8Channels123HexColor;
-
-  @override
-  String toString() => int24Hex;
+  String toString() => int24.hex(6);
 }

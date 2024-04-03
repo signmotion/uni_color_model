@@ -7,11 +7,8 @@ class NumColor<T extends num> extends UniColor<T> {
     required super.channelRanges,
     required super.model,
     super.channelPresentation,
-    super.channel0,
-    required super.channel1,
-    required super.channel2,
-    required super.channel3,
-    required super.channel4,
+    required super.hasAlpha,
+    required super.channels,
     super.index,
     super.code,
     super.defaultLanguage,
@@ -20,42 +17,29 @@ class NumColor<T extends num> extends UniColor<T> {
     super.group,
   });
 
-  /// Subtract channels: `channelN - channelN`.
+  /// Subtract channels: `channelN - b.channelN`.
   NumColor<T> operator -(UniColor<T> b) {
     assertSameModel(b);
-    assertArgbModel();
+
     return copyWith(
-      channel0: ((channel0 ?? 0) - (b.channel0 ?? 0)) as T,
-      channel1: (channel1 - b.channel1) as T,
-      channel2: (channel2 - b.channel2) as T,
-      channel3: (channel3 - b.channel3) as T,
-      channel4: (channel4 - b.channel4) as T,
+      hasAlpha: hasAlpha || b.hasAlpha,
+      channels: channels.subtract(b.channels),
     );
   }
 
   /// Channel multiplication: `channelN * channelN`.
-  NumColor<T> get square => copyWith(
-        channel0: ((channel0 ?? 0) * (channel0 ?? 0)) as T,
-        channel1: (channel1 * channel1) as T,
-        channel2: (channel2 * channel2) as T,
-        channel3: (channel3 * channel3) as T,
-        channel4: (channel4 * channel4) as T,
-      );
+  NumColor<T> get square => copyWith(channels: channels.square);
 
   /// Summarize channels: `channel0 + channel1 + ...`.
-  T get summarize =>
-      ((channel0 ?? 0) + channel1 + channel2 + channel3 + channel4) as T;
+  T get summarize => channels.summarize;
 
   NumColor<T> copyWith({
     List<int>? channelDepths,
     List<(T, T)>? channelRanges,
     ColorModel? model,
     ColorChannelPresentation? channelPresentation,
-    T? channel0,
-    T? channel1,
-    T? channel2,
-    T? channel3,
-    T? channel4,
+    bool? hasAlpha,
+    List<T>? channels,
     int? index,
     String? code,
     String? defaultLanguage,
@@ -68,11 +52,8 @@ class NumColor<T extends num> extends UniColor<T> {
         channelRanges: channelRanges ?? this.channelRanges,
         model: model ?? this.model,
         channelPresentation: channelPresentation ?? this.channelPresentation,
-        channel0: channel0 ?? this.channel0,
-        channel1: channel1 ?? this.channel1,
-        channel2: channel2 ?? this.channel2,
-        channel3: channel3 ?? this.channel3,
-        channel4: channel4 ?? this.channel4,
+        hasAlpha: hasAlpha ?? this.hasAlpha,
+        channels: channels ?? this.channels,
         index: index ?? this.index,
         code: code ?? this.code,
         defaultLanguage: defaultLanguage ?? this.defaultLanguage,
@@ -81,33 +62,9 @@ class NumColor<T extends num> extends UniColor<T> {
         group: group ?? this.group,
       );
 
-  /// `true` when [channel0]s are equal.
+  /// `true` when channels [n] are equal.
   @override
-  bool equalChannel0(UniColor<T> b, {int decimals = -1}) => (channel0 ?? 0)
+  bool equalChannelN(int n, UniColor<T> b, {int decimals = -1}) => channels[n]
       .toDouble()
-      .equalWithDecimals((b.channel0 ?? 0).toDouble(), decimals: decimals);
-
-  /// `true` when [channel1]s are equal.
-  @override
-  bool equalChannel1(UniColor<T> b, {int decimals = -1}) => channel1
-      .toDouble()
-      .equalWithDecimals(b.channel1.toDouble(), decimals: decimals);
-
-  /// `true` when [channel2]s are equal.
-  @override
-  bool equalChannel2(UniColor<T> b, {int decimals = -1}) => channel2
-      .toDouble()
-      .equalWithDecimals(b.channel2.toDouble(), decimals: decimals);
-
-  /// `true` when [channel3]s are equal.
-  @override
-  bool equalChannel3(UniColor<T> b, {int decimals = -1}) => channel3
-      .toDouble()
-      .equalWithDecimals(b.channel3.toDouble(), decimals: decimals);
-
-  /// `true` when [channel4]s are equal.
-  @override
-  bool equalChannel4(UniColor<T> b, {int decimals = -1}) => channel4
-      .toDouble()
-      .equalWithDecimals(b.channel4.toDouble(), decimals: decimals);
+      .equalWithDecimals(b.channels[n].toDouble(), decimals: decimals);
 }

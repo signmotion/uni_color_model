@@ -2,12 +2,12 @@ part of '../../uni_color_model.dart';
 
 /// ARGB double model of color.
 class ArgbDoubleColor extends DoubleColor {
-  const ArgbDoubleColor({
+  ArgbDoubleColor({
     super.channelPresentation,
-    required super.channel0,
-    required super.channel1,
-    required super.channel2,
-    required super.channel3,
+    required double alpha,
+    required double red,
+    required double green,
+    required double blue,
     super.index,
     super.code,
     super.defaultLanguage,
@@ -15,7 +15,8 @@ class ArgbDoubleColor extends DoubleColor {
     super.names,
     super.group,
   }) : super(
+          hasAlpha: true,
           model: ColorModel.rgb,
-          channel4: 0,
+          channels: [0, alpha, red, green, blue],
         );
 }

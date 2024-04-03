@@ -29,14 +29,16 @@ extension ColorModelConverterIntExt on int {
     ];
 
     return NumColor(
-      channelDepths: depths,
-      channelRanges: ranges,
-      model: ColorModel.rgb,
-      channel0: intBitsChannelNColor(depths[0], 0),
-      channel1: intBitsChannelNColor(depths[1], 1),
-      channel2: intBitsChannelNColor(depths[2], 2),
-      channel3: intBitsChannelNColor(depths[3], 3),
-      channel4: intBitsChannelNColor(depths[4], 4),
-    );
+        channelDepths: depths,
+        channelRanges: ranges,
+        model: ColorModel.rgb,
+        hasAlpha: false,
+        channels: [
+          0,
+          0,
+          intBitsChannelNColor(depths[2], 2),
+          intBitsChannelNColor(depths[3], 3),
+          intBitsChannelNColor(depths[4], 4),
+        ]);
   }
 }

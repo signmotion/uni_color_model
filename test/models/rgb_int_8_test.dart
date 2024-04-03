@@ -21,10 +21,6 @@ void main() {
       expect(c.int24, 0x0a1b2c);
     });
 
-    test('int24Hex', () {
-      expect(c.int24Hex, '0a1b2c');
-    });
-
     test('toString', () {
       expect('$c', '0a1b2c');
     });

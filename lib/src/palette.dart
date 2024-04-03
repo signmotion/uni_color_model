@@ -16,12 +16,12 @@ class UniPalette<T> {
   factory UniPalette.file(
     String path,
     ColorModel model, {
-    List<int> channelDepths = const [8, 8, 8, 8],
+    List<int> channelDepths = const [8, 8, 8, 8, 8],
   }) {
     if (model != ColorModel.rgb) {
       throw UnimplementedError('$model');
     }
-    if (channelDepths != const [8, 8, 8, 8]) {
+    if (channelDepths != const [8, 8, 8, 8, 8]) {
       throw UnimplementedError('Channel depths `$channelDepths`.');
     }
 
@@ -43,12 +43,12 @@ class UniPalette<T> {
   factory UniPalette.iterableInt(
     Iterable<int> iterable,
     ColorModel model, {
-    List<int> channelDepths = const [8, 8, 8, 8],
+    List<int> channelDepths = const [8, 8, 8, 8, 8],
   }) {
     if (model != ColorModel.rgb) {
       throw UnimplementedError('$model');
     }
-    if (channelDepths != const [8, 8, 8, 8]) {
+    if (channelDepths != const [8, 8, 8, 8, 8]) {
       throw UnimplementedError('Channel depths `$channelDepths`.');
     }
 
@@ -57,8 +57,7 @@ class UniPalette<T> {
           ' We have: ${iterable.length} $iterable');
     }
 
-    final list = [for (final v in iterable) v.argbInt8ToArgbInt8Color]
-        as List<UniColor<T>>;
+    final list = [for (final v in iterable) v.rgb] as List<UniColor<T>>;
 
     return UniPalette(list);
   }

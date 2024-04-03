@@ -7,11 +7,8 @@ class Int8Color extends NumColor<int> {
   const Int8Color({
     required super.model,
     super.channelPresentation,
-    super.channel0,
-    required super.channel1,
-    required super.channel2,
-    required super.channel3,
-    required super.channel4,
+    required super.hasAlpha,
+    required super.channels,
     super.index,
     super.code,
     super.defaultLanguage,

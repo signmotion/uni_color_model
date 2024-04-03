@@ -10,7 +10,7 @@ void main() {
     test('b.rgb', () {
       final r = b.rgb;
       expect(r.model, ColorModel.rgb);
-      // TODO expect(r.hex, '0a1b2c');
+      expect(r.int24, b);
     });
   }, tags: ['current']);
 }

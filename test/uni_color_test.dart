@@ -8,8 +8,11 @@ void main() {
     final c = RgbInt8Color.rgb(0xC5, 0xC4, 0xC6);
 
     test('operator ==, same values', () {
-      expect(a == a, isTrue, reason: '$a != $c');
-      expect(a == b, isTrue, reason: '$a != $c');
+      expect(a == a, isTrue, reason: '$a != $a');
+    });
+
+    test('operator ==, equal values', () {
+      expect(a == b, isTrue, reason: '$a != $b');
     });
 
     test('operator ==, different values', () {
