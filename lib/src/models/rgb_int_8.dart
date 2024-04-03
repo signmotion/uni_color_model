@@ -53,4 +53,10 @@ class RgbInt8Color extends Int8Color
         channel3: b,
         names: names,
       );
+
+  factory RgbInt8Color.value(int v) => RgbInt8Color(
+        channel1: v.int8Channel0Color,
+        channel2: v.int8Channel1Color,
+        channel3: v.int8Channel2Color,
+      );
 }
