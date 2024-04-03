@@ -4,6 +4,7 @@ import 'package:test/test.dart';
 void main() {
   group('intBitsChannelNColor, correct values', () {
     const b = 0x6fde0a1b2c;
+    // bin    0110111111011110000010100001101100101100
     // bin  2 011011111101111000001010000110 11 00 10 11 00
     // bin 10 0110111111 0111100000 1010000110 1100101100
 
