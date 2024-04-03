@@ -253,16 +253,16 @@ part of '../../uni_color_model.dart';
 // }
 
 // extension ColorNameIntExt on int {
-//   /// The first (alpha in ARGB model) channel of this color in an 8 bit value.
+//   /// The first (alpha in ARGB model) channel of this color in 8 bits value.
 //   int get colorChannel1 => (0xff000000 & this) >> 24;
 
-//   /// The second (red in ARGB model) channel of this color in an 8 bit value.
+//   /// The second (red in ARGB model) channel of this color in 8 bits value.
 //   int get colorChannel2 => (0x00ff0000 & this) >> 16;
 
-//   /// The third (green in ARGB model) channel of this color in an 8 bit value.
+//   /// The third (green in ARGB model) channel of this color in 8 bits value.
 //   int get colorChannel3 => (0x0000ff00 & this) >> 8;
 
-//   /// The fourth (blue in ARGB model) channel of this color in an 8 bit value.
+//   /// The fourth (blue in ARGB model) channel of this color in 8 bits value.
 //   int get colorChannel4 => (0x000000ff & this) >> 0;
 
 //   UniColor<T> colorArgbToUniColorArgb<T>() =>

@@ -3,23 +3,23 @@ part of '../../uni_color_model.dart';
 /// [String] doesn't know about the color representation:
 /// the extension name interprets it
 extension ColorModelStringExt on String {
-  /// The zero channel of this color in an 8 bit value.
+  /// The zero channel of this color in 8 bits value.
   int get int8Channel0Color =>
       length < 2 ? -1 : int.parse('0x${substring(0, 0 + 2)}');
 
-  /// The first channel of this color in an 8 bit value.
+  /// The first channel of this color in 8 bits value.
   int get int8Channel1Color =>
       length < 4 ? -1 : int.parse('0x${substring(2, 2 + 2)}');
 
-  /// The second channel of this color in an 8 bit value.
+  /// The second channel of this color in 8 bits value.
   int get int8Channel2Color =>
       length < 6 ? -1 : int.parse('0x${substring(4, 4 + 2)}');
 
-  /// The third channel of this color in an 8 bit value.
+  /// The third channel of this color in 8 bits value.
   int get int8Channel3Color =>
       length < 8 ? -1 : int.parse('0x${substring(6, 6 + 2)}');
 
-  /// The fourth channel of this color in an 8 bit value.
+  /// The fourth channel of this color in 8 bits value.
   int get int8Channel4Color =>
       length < 10 ? -1 : int.parse('0x${substring(8, 8 + 2)}');
 
