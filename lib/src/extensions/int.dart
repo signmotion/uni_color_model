@@ -5,10 +5,20 @@ extension ColorModelIntBitsExt on int {
   /// The value of the channel [n] from [int] when the channels have
   /// sizes [bits].
   /// [bits] should be in range [1; 64].
-  /// [n] should be in range [0; 4]. Cap because [UniColor] has 5 channels.
+  /// [n] should be in range [0; 64].
   /// Multiply [n] * [bits] should be less or equal 53 for Web and 64 for others.
-  int intBitsChannelNColor(int bits, int n) =>
-      (this >> (bits * (5 - n - 1))) & fillWithOnesRight(bits);
+  /// [channels] How many channels we have. Range [1; 64]. Default value is 5
+  /// because [UniColor] has 5 channels.
+  /// [reverse] The first channel starts on the right side of the number.
+  int intBitsChannelNColor(
+    int bits,
+    int n, {
+    int channels = 5,
+    bool reverse = true,
+  }) {
+    final k = reverse ? channels - n - 1 : n;
+    return (this >> (bits * k)) & fillWithOnesRight(bits);
+  }
 
   /// 2 ^ this
   int get pow2N => pow(2, this).round();
