@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:collection/collection.dart';
 import 'package:wfile/wfile.dart';
 
+part 'src/converters/acmyk_to_int.dart';
 part 'src/converters/int_to_acmyk.dart';
 
 part 'src/extensions/double.dart';

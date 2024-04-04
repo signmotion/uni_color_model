@@ -37,11 +37,5 @@ class AcmykColor<T extends num> extends NumColor<T> {
   /// Black channel.
   T get k => channels[4];
 
-  /// [int] presentation.
-  int get int40 =>
-      (0xff & (a as int)) << 32 |
-      (0xff & (c as int)) << 24 |
-      (0xff & (m as int)) << 16 |
-      (0xff & (y as int)) << 8 |
-      (0xff & (k as int)) << 0;
+  // ! All converters declared as extensions. See folder `converters`.
 }
