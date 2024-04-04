@@ -4,13 +4,13 @@ part of '../../uni_color_model.dart';
 extension ColorModelConverterIntToAcmykExt on int {
   /// Use [ColorModelConfig] for define own defaults behaviour.
   /// See [acmykWith].
-  AcmykColor get acmyk => acmykWith();
+  AcmykColor<int> get acmyk => acmykWith();
 
-  /// See [acmyk].
   /// We can interpret [int] with different bit depths per channel.
   /// Define [depth] when all channels are equal or [depths] when
   /// channels have different depth.
-  AcmykColor acmykWith({
+  /// See [acmyk].
+  AcmykColor<int> acmykWith({
     int? depth,
     List<int>? depths,
   }) {
@@ -25,11 +25,11 @@ extension ColorModelConverterIntToAcmykExt on int {
     final ds = depths ?? [d, d, d, d, d];
 
     return AcmykColor(
-      alpha: intDepthsChannelNColor(ds, 0),
-      cyan: intDepthsChannelNColor(ds, 1),
-      magenta: intDepthsChannelNColor(ds, 2),
-      yellow: intDepthsChannelNColor(ds, 3),
-      black: intDepthsChannelNColor(ds, 4),
+      alpha: channelFromIntDepths(0, ds),
+      cyan: channelFromIntDepths(1, ds),
+      magenta: channelFromIntDepths(2, ds),
+      yellow: channelFromIntDepths(3, ds),
+      black: channelFromIntDepths(4, ds),
     );
   }
 }

@@ -10,9 +10,9 @@ extension ColorModelIntExt on int {
   /// [channels] How many channels we have. Range [1; 64]. Default value is 5
   /// because [UniColor] has 5 channels.
   /// [reverse] The first channel starts on the right side of the number.
-  int intDepthChannelNColor(
-    int depth,
-    int n, {
+  int channelFromIntDepth(
+    int n,
+    int depth, {
     int channels = 5,
     bool reverse = true,
   }) {
@@ -20,9 +20,9 @@ extension ColorModelIntExt on int {
     return (this >> (depth * k)) & fillWithOnesRight(depth);
   }
 
-  int intDepthsChannelNColor(
-    List<int> depths,
-    int n, {
+  int channelFromIntDepths(
+    int n,
+    List<int> depths, {
     bool reverse = true,
   }) {
     final ds = reverse ? depths : depths.reversed.toList(growable: false);
