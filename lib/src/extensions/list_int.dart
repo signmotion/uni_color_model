@@ -9,16 +9,20 @@ extension ListIntExt on List<int> {
 /// TODO(sign): Separated package `bit_coder`?
 extension ColorModelListIntExt on List<int> {
   int get packToInt8 => switch (length) {
-        0 => 0,
-        1 => this[0],
-        2 => (this[0] << 8) | this[1],
-        3 => (this[0] << 16) | (this[1] << 8) | this[2],
-        4 => (this[0] << 24) | (this[1] << 16) | (this[2] << 8) | this[3],
-        5 => (this[0] << 32) |
-            (this[1] << 24) |
-            (this[2] << 16) |
-            (this[3] << 8) |
-            this[4],
-        _ => throw UnsupportedError('Length should be less 6.'),
+        0 => 0x00,
+        1 => (0xff & this[0]),
+        2 => ((0xff & this[0]) << 8) | (0xff & this[1]),
+        3 =>
+          ((0xff & this[0]) << 16) | ((0xff & this[1]) << 8) | (0xff & this[2]),
+        4 => ((0xff & this[0]) << 24) |
+            ((0xff & this[1]) << 16) |
+            ((0xff & this[2]) << 8) |
+            (0xff & this[3]),
+        5 => ((0xff & this[0]) << 32) |
+            ((0xff & this[1]) << 24) |
+            ((0xff & this[2]) << 16) |
+            ((0xff & this[3]) << 8) |
+            (0xff & this[4]),
+        _ => throw UnsupportedError('Length should be 5 or less.'),
       };
 }
