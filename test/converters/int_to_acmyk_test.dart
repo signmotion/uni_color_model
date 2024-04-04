@@ -15,17 +15,17 @@ void main() {
       expect(r.channels, [0x6f, 0xde, 0x0a, 0x1b, 0x2c]);
     });
 
-    test('acmykWith, depths for channels: equal 4', () {
+    test('acmykWith, depths for channels: equal 4 bits', () {
       final r = c.acmykWith(depth: 4);
       expect(r.channels, [0x0a, 0x01, 0x0b, 0x02, 0x0c]);
     });
 
-    test('acmykWith, depths for channel: equal 8', () {
+    test('acmykWith, depths for channel: equal 8 bits', () {
       final r = c.acmykWith(depth: 8);
       expect(r.channels, [0x6f, 0xde, 0x0a, 0x1b, 0x2c]);
     });
 
-    test('acmykWith, depths for channels: equal 12', () {
+    test('acmykWith, depths for channels: equal 12 bits', () {
       // bin 000000000110 111111011110 000010100001 101100101100
       final r = c.acmykWith(depth: 12);
       expect(r.channels, [
@@ -37,7 +37,7 @@ void main() {
       ]);
     });
 
-    test('acmykWith, depths for channels: 2:3:4:5:6', () {
+    test('acmykWith, depths for channels: 2:3:4:5:6 bits', () {
       // bin 0000000001101111110111100000 10 100 0011 01100 101100
       final r = c.acmykWith(depths: [2, 3, 4, 5, 6]);
       expect(r.channels, [
@@ -48,5 +48,5 @@ void main() {
         int.tryParse('101100', radix: 2),
       ]);
     });
-  }, tags: ['current']);
+  });
 }
