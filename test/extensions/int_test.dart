@@ -90,7 +90,7 @@ void main() {
         int.parse('1100', radix: 2),
       );
     });
-  }, tags: ['current']);
+  });
 
   group('fillWithOnesRight, correct values', () {
     test('fillWithOnesRight', () {

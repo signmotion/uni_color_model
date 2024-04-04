@@ -25,11 +25,11 @@ extension ColorModelConverterIntToAcmykExt on int {
     final ds = depths ?? [d, d, d, d, d];
 
     return AcmykColor(
-      alpha: intBitsChannelNColor(ds[0], 0),
-      cyan: intBitsChannelNColor(ds[1], 1),
-      magenta: intBitsChannelNColor(ds[2], 2),
-      yellow: intBitsChannelNColor(ds[3], 3),
-      black: intBitsChannelNColor(ds[4], 4),
+      alpha: intDepthsChannelNColor(ds, 0),
+      cyan: intDepthsChannelNColor(ds, 1),
+      magenta: intDepthsChannelNColor(ds, 2),
+      yellow: intDepthsChannelNColor(ds, 3),
+      black: intDepthsChannelNColor(ds, 4),
     );
   }
 }
