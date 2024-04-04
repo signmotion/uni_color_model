@@ -7,6 +7,7 @@ extension ListIntExt on List<int> {
 }
 
 /// TODO(sign): Separated package `bit_coder`?
+/// See [ColorModelIntExt.unpackFromInt8].
 extension ColorModelListIntExt on List<int> {
   int get packToInt8 => switch (length) {
         0 => 0x00,

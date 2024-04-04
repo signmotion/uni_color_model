@@ -104,4 +104,30 @@ void main() {
       expect(fillWithOnesRight(32), 0xffffffff);
     });
   });
+
+  group('unpackFromInt8, correct values', () {
+    test('zero value', () {
+      expect(0x00.unpackFromInt8, <int>[]);
+    });
+
+    test('1 element', () {
+      expect(0xde.unpackFromInt8, [0xde]);
+    });
+
+    test('2 elements', () {
+      expect(0xde0a.unpackFromInt8, [0xde, 0x0a]);
+    });
+
+    test('3 elements', () {
+      expect(0xde0a1b.unpackFromInt8, [0xde, 0x0a, 0x1b]);
+    });
+
+    test('4 elements', () {
+      expect(0xde0a1b2c.unpackFromInt8, [0xde, 0x0a, 0x1b, 0x2c]);
+    });
+
+    test('5 elements', () {
+      expect(0x6fde0a1b2c.unpackFromInt8, [0x6f, 0xde, 0x0a, 0x1b, 0x2c]);
+    });
+  }, tags: ['current']);
 }

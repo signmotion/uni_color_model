@@ -31,6 +31,37 @@ extension ColorModelIntExt on int {
     return (this >> shift) & fillWithOnesRight(l);
   }
 
+  /// See [ColorModelListIntExt.packToInt8].
+  List<int> get unpackFromInt8 => switch (this) {
+        == 0x00 => [],
+        <= 0xff => [
+            0xff & this,
+          ],
+        <= 0xffff => [
+            0xff & (this >> 8),
+            0xff & this,
+          ],
+        <= 0xffffff => [
+            0xff & (this >> 16),
+            0xff & (this >> 8),
+            0xff & this,
+          ],
+        <= 0xffffffff => [
+            0xff & (this >> 24),
+            0xff & (this >> 16),
+            0xff & (this >> 8),
+            0xff & this,
+          ],
+        <= 0xffffffffff => [
+            0xff & (this >> 32),
+            0xff & (this >> 24),
+            0xff & (this >> 16),
+            0xff & (this >> 8),
+            0xff & this,
+          ],
+        _ => throw ArgumentError('Supported int <= 0xffffffffff (5 bytes).'),
+      };
+
   /// 2 ^ this
   int get pow2N => pow(2, this).round();
 

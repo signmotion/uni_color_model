@@ -26,5 +26,5 @@ void main() {
     test('5 elements', () {
       expect([0x6f, 0xde, 0x0a, 0x1b, 0x2c].packToInt8, 0x6fde0a1b2c);
     });
-  }, tags: ['current']);
+  });
 }
