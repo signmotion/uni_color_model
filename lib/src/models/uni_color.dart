@@ -3,42 +3,32 @@ part of '../../uni_color_model.dart';
 /// The universal class for color.
 /// The values can represent any [ColorModel] with opacity typed [T].
 /// [T] can be [int], [double], [String], etc.
+///
+/// Some gloss about "color":
+///
+/// **True color** - represents as int 8 bits. See https://en.wikipedia.org/wiki/Color_depth#True_color_(24-bit)
 class UniColor<T> implements Comparable<UniColor<T>> {
   const UniColor({
-    required this.channelDepths,
-    required this.channelRanges,
     required this.model,
-    this.channelPresentation = ColorChannelPresentation.hex,
     required this.hasAlpha,
     required this.channels,
     this.index,
     this.code = '',
-    this.defaultLanguage = 'en',
     String? name,
     Names? names,
     this.group = '',
-  })  : assert(channelDepths.length == 5),
-        assert(channelRanges.length == 5),
+  })  : assert(channels.length == 5),
         _name = name,
         _names = names;
 
-  /// Bits per channels.
-  final List<int> channelDepths;
-
-  /// Min and max values for channels.
-  final List<(T, T)> channelRanges;
-
   final ColorModel model;
-
-  final ColorChannelPresentation channelPresentation;
 
   /// Has alpha channel for model.
   /// Reason: The color can be fully transparent but has [hasAlpha].
   final bool hasAlpha;
 
-  T? get alpha => hasAlpha ? channels[0] : null;
-
-  /// Channels including alpha value as the first element.
+  /// Channels of color.
+  /// Children defines the order of channels.
   final List<T> channels;
 
   /// Some colors have an index.
@@ -50,7 +40,7 @@ class UniColor<T> implements Comparable<UniColor<T>> {
   final String code;
 
   /// A default language for color name as Alpha2-code standard.
-  final String defaultLanguage;
+  static const String defaultLanguage = 'en';
 
   /// A color name on [defaultLanguage].
   final String? _name;
@@ -68,10 +58,7 @@ class UniColor<T> implements Comparable<UniColor<T>> {
   @override
   bool operator ==(Object other) =>
       other is UniColor<T> &&
-      channelDepths == other.channelDepths &&
-      channelRanges == other.channelRanges &&
       model == other.model &&
-      channelPresentation == other.channelPresentation &&
       equalChannels(other) &&
       index == other.index &&
       code == other.code &&
@@ -112,10 +99,7 @@ class UniColor<T> implements Comparable<UniColor<T>> {
   int compareTo(UniColor<T> b) => '$this'.compareTo('$b');
 
   @override
-  String toString() => ' $channelDepths'
-      ' $channelRanges'
-      ' $model'
-      ' $channelPresentation'
+  String toString() => '$model'
       ' $channels'
       ' $index'
       ' `$code`'
@@ -125,10 +109,7 @@ class UniColor<T> implements Comparable<UniColor<T>> {
 
   @override
   int get hashCode => [
-        channelDepths,
-        channelRanges,
         model,
-        channelPresentation,
         channels,
         index,
         code,

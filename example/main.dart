@@ -3,8 +3,11 @@
 import 'package:uni_color_model/uni_color_model.dart';
 
 void main() {
-  final c = 0x1805db.rgb;
-  print(c.int24.hex(6));
-  print(c.hasAlpha);
-  print('Red channel: #${c.r.hex()}');
+  // CMYK with alpha
+  {
+    final c = 0x6fde0a1b2c.acmyk;
+    print(c.int40.hex(10));
+    print(c.hasAlpha);
+    print('Cyan channel: #${c.c.hex()}');
+  }
 }

@@ -33,7 +33,7 @@ class UniPalette<T> {
     final list = l.map((c) {
       final hasAlpha = c.length == 4;
       final pc = hasAlpha ? c : [0xff, ...c];
-      return pc.argbInt8ToRgbInt8;
+      return pc.mergeWithShift8Left;
     });
 
     return UniPalette.iterableInt(list, model);
@@ -57,9 +57,11 @@ class UniPalette<T> {
           ' We have: ${iterable.length} $iterable');
     }
 
-    final list = [for (final v in iterable) v.rgb] as List<UniColor<T>>;
+    throw UnimplementedError();
 
-    return UniPalette(list);
+    // TODO final list = [for (final v in iterable) v.rgb] as List<UniColor<T>>;
+
+    //return UniPalette(list);
   }
 
   /// Name of palette.

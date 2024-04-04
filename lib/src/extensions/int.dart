@@ -1,7 +1,7 @@
 part of '../../uni_color_model.dart';
 
 /// TODO(sign): Separated package `int_color`?
-extension ColorModelIntBitsExt on int {
+extension ColorModelIntExt on int {
   /// The value of the channel [n] from [int] when the channels have
   /// sizes [bits].
   /// [bits] should be in range [1; 64].
@@ -22,6 +22,10 @@ extension ColorModelIntBitsExt on int {
 
   /// 2 ^ this
   int get pow2N => pow(2, this).round();
+
+  /// Converts to hexadecimal [String] value with [n] padding left [filler].
+  String hex([int n = 2, String filler = '0']) =>
+      toRadixString(16).padLeft(n, filler);
 }
 
 /// [int] with filled [n] bits from right.

@@ -3,15 +3,11 @@ part of '../../uni_color_model.dart';
 /// Color with [num] values per channels.
 class NumColor<T extends num> extends UniColor<T> {
   const NumColor({
-    required super.channelDepths,
-    required super.channelRanges,
     required super.model,
-    super.channelPresentation,
     required super.hasAlpha,
     required super.channels,
     super.index,
     super.code,
-    super.defaultLanguage,
     super.name,
     super.names,
     super.group,
@@ -34,29 +30,21 @@ class NumColor<T extends num> extends UniColor<T> {
   T get summarize => channels.summarize;
 
   NumColor<T> copyWith({
-    List<int>? channelDepths,
-    List<(T, T)>? channelRanges,
     ColorModel? model,
-    ColorChannelPresentation? channelPresentation,
     bool? hasAlpha,
     List<T>? channels,
     int? index,
     String? code,
-    String? defaultLanguage,
     String? name,
     Names? names,
     String? group,
   }) =>
       NumColor(
-        channelDepths: channelDepths ?? this.channelDepths,
-        channelRanges: channelRanges ?? this.channelRanges,
         model: model ?? this.model,
-        channelPresentation: channelPresentation ?? this.channelPresentation,
         hasAlpha: hasAlpha ?? this.hasAlpha,
         channels: channels ?? this.channels,
         index: index ?? this.index,
         code: code ?? this.code,
-        defaultLanguage: defaultLanguage ?? this.defaultLanguage,
         name: name ?? this.name,
         names: names ?? this.names,
         group: group ?? this.group,
