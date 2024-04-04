@@ -23,6 +23,6 @@ extension ColorModelListIntExt on List<int> {
             ((0xff & this[2]) << 16) |
             ((0xff & this[3]) << 8) |
             (0xff & this[4]),
-        _ => throw UnsupportedError('Length should be 5 or less.'),
+        _ => throw ArgumentError('Length should be 5 or less.'),
       };
 }
