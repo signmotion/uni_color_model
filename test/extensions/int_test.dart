@@ -2,11 +2,11 @@ import 'package:uni_color_model/uni_color_model.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('intDepthChannelNColor, correct values', () {
+  group('channelFromIntDepth, correct values', () {
     const b = 0x6fde0a1b2c;
     // bin 0110111111011110000010100001101100101100
 
-    test('intBitsChannelNColor 2 bits', () {
+    test('2 bits', () {
       // bin 2 bits 011011111101111000001010000110 11 00 10 11 00
       expect(b.channelFromIntDepth(2, 0), int.parse('11', radix: 2));
       expect(b.channelFromIntDepth(2, 1), int.parse('00', radix: 2));
@@ -15,7 +15,7 @@ void main() {
       expect(b.channelFromIntDepth(2, 4), int.parse('00', radix: 2));
     });
 
-    test('intBitsChannelNColor 4 bits', () {
+    test('4 bits', () {
       expect(b.channelFromIntDepth(4, 0).hex(1), 'a');
       expect(b.channelFromIntDepth(4, 1).hex(1), '1');
       expect(b.channelFromIntDepth(4, 2).hex(1), 'b');
@@ -23,7 +23,7 @@ void main() {
       expect(b.channelFromIntDepth(4, 4).hex(1), 'c');
     });
 
-    test('intBitsChannelNColor 8 bits', () {
+    test('8 bits', () {
       expect(b.channelFromIntDepth(8, 0).hex(), '6f');
       expect(b.channelFromIntDepth(8, 1).hex(), 'de');
       expect(b.channelFromIntDepth(8, 2).hex(), '0a');
@@ -31,7 +31,7 @@ void main() {
       expect(b.channelFromIntDepth(8, 4).hex(), '2c');
     });
 
-    test('intBitsChannelNColor 10 bits', () {
+    test('10 bits', () {
       // bin 10 bits 0110111111 0111100000 1010000110 1100101100
       expect(b.channelFromIntDepth(10, 0), int.parse('0000000000', radix: 2));
       expect(b.channelFromIntDepth(10, 1), int.parse('0110111111', radix: 2));
@@ -41,10 +41,10 @@ void main() {
     });
   });
 
-  group('intDepthChannelNColor, correct values', () {
+  group('channelFromIntDepths, correct values', () {
     const b = 0x6fde0a1b2c;
 
-    test('intDepthsChannelNColor 5:6 bits, reverse', () {
+    test('5:6 bits, reverse', () {
       // bin 01101111110111100000101000011 01100 101100
       const depths = [5, 6];
       expect(
@@ -57,7 +57,7 @@ void main() {
       );
     });
 
-    test('intDepthsChannelNColor 3:4:5:6 bits, reverse', () {
+    test('3:4:5:6 bits, reverse', () {
       // bin 0110111111011110000010 100 0011 01100 101100
       const depths = [3, 4, 5, 6];
       expect(
@@ -78,7 +78,7 @@ void main() {
       );
     });
 
-    test('intDepthsChannelNColor 5:6 bits, no reverse', () {
+    test('5:6 bits, no reverse', () {
       // bin 01101111110111100000101000011 011001 01100
       const depths = [5, 6];
       expect(
@@ -93,7 +93,7 @@ void main() {
   });
 
   group('fillWithOnesRight, correct values', () {
-    test('fillWithOnesRight', () {
+    test('fill ones', () {
       expect(fillWithOnesRight(0), 0x00);
       expect(fillWithOnesRight(1), 0x01);
       expect(fillWithOnesRight(2), 0x03);
