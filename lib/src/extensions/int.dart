@@ -20,6 +20,7 @@ extension ColorModelIntExt on int {
     return (this >> (depth * k)) & fillWithOnesRight(depth);
   }
 
+  /// ! Ignores out of range bits from left.
   int channelFromIntDepths(
     int n,
     List<int> depths, {
@@ -61,6 +62,47 @@ extension ColorModelIntExt on int {
           channelFromIntDepth(2, depth),
           channelFromIntDepth(3, depth),
           channelFromIntDepth(4, depth),
+        ],
+      _ => throw ArgumentError('Supported int <= 0xffffffffff (5 bytes).'),
+    };
+
+    return reverse ? r : r.reversed.toList();
+  }
+
+  /// ! Ignores out of range bits from left.
+  List<int> unpackFromIntDepths(
+    List<int> depths, {
+    bool reverse = true,
+  }) {
+    final l = depths.summarize;
+    final mask = fillWithOnesRight(l);
+    final v = this & mask;
+    final r = switch (depths.length) {
+      == 0 => <int>[],
+      <= 1 => [
+          v.channelFromIntDepths(0, depths),
+        ],
+      <= 2 => [
+          v.channelFromIntDepths(0, depths),
+          v.channelFromIntDepths(1, depths),
+        ],
+      <= 3 => [
+          v.channelFromIntDepths(0, depths),
+          v.channelFromIntDepths(1, depths),
+          v.channelFromIntDepths(2, depths),
+        ],
+      <= 4 => [
+          v.channelFromIntDepths(0, depths),
+          v.channelFromIntDepths(1, depths),
+          v.channelFromIntDepths(2, depths),
+          v.channelFromIntDepths(3, depths),
+        ],
+      <= 5 => [
+          v.channelFromIntDepths(0, depths),
+          v.channelFromIntDepths(1, depths),
+          v.channelFromIntDepths(2, depths),
+          v.channelFromIntDepths(3, depths),
+          v.channelFromIntDepths(4, depths),
         ],
       _ => throw ArgumentError('Supported int <= 0xffffffffff (5 bytes).'),
     };
