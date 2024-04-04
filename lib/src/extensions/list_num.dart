@@ -7,7 +7,7 @@ extension ListNumExt<T extends num> on List<T> {
       List.generate(length, (i) => (this[i] - other[i]) as T);
 
   /// R = List A0 + List A1 + ...
-  T get summarize => reduce((a, b) => (a + b) as T);
+  T get summarize => isEmpty ? 0 as T : reduce((a, b) => (a + b) as T);
 
   /// List R = List Ai ^ 2
   List<T> get square => List.generate(length, (i) => (this[i] * this[i]) as T);
