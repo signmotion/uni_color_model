@@ -7,7 +7,7 @@ void main() {
     // bin 0110111111011110000010100001101100101100
 
     test('2 bits', () {
-      // bin 2 bits 011011111101111000001010000110 11 00 10 11 00
+      // bin 011011111101111000001010000110 11 00 10 11 00
       expect(b.channelFromIntDepth(2, 0), int.parse('11', radix: 2));
       expect(b.channelFromIntDepth(2, 1), int.parse('00', radix: 2));
       expect(b.channelFromIntDepth(2, 2), int.parse('10', radix: 2));
@@ -32,7 +32,7 @@ void main() {
     });
 
     test('10 bits', () {
-      // bin 10 bits 0110111111 0111100000 1010000110 1100101100
+      // bin 0000000000 0110111111 0111100000 1010000110 1100101100
       expect(b.channelFromIntDepth(10, 0), int.parse('0000000000', radix: 2));
       expect(b.channelFromIntDepth(10, 1), int.parse('0110111111', radix: 2));
       expect(b.channelFromIntDepth(10, 2), int.parse('0111100000', radix: 2));
@@ -92,18 +92,46 @@ void main() {
     });
   });
 
-  group('fillWithOnesRight, correct values', () {
-    test('fill ones', () {
-      expect(fillWithOnesRight(0), 0x00);
-      expect(fillWithOnesRight(1), 0x01);
-      expect(fillWithOnesRight(2), 0x03);
-      expect(fillWithOnesRight(4), 0x0f);
-      expect(fillWithOnesRight(8), 0xff);
-      expect(fillWithOnesRight(16), 0xffff);
-      expect(fillWithOnesRight(24), 0xffffff);
-      expect(fillWithOnesRight(32), 0xffffffff);
+  group('unpackFromIntDepth, correct values', () {
+    const b = 0x6fde0a1b2c;
+    // bin 0110111111011110000010100001101100101100
+
+    test('2 bits', () {
+      // bin 011011111101111000001010000110 11 00 10 11 00
+      expect(
+        b.unpackFromIntDepth(2),
+        [
+          int.parse('11', radix: 2),
+          int.parse('00', radix: 2),
+          int.parse('10', radix: 2),
+          int.parse('11', radix: 2),
+          int.parse('00', radix: 2),
+        ],
+      );
     });
-  });
+
+    test('4 bits', () {
+      expect(b.unpackFromIntDepth(4), [0xa, 0x1, 0xb, 0x2, 0xc]);
+    });
+
+    test('8 bits', () {
+      expect(b.unpackFromIntDepth(8), [0x6f, 0xde, 0x0a, 0x1b, 0x2c]);
+    });
+
+    test('10 bits', () {
+      // bin 0000000000 0110111111 0111100000 1010000110 1100101100
+      expect(
+        b.unpackFromIntDepth(10),
+        [
+          int.parse('0000000000', radix: 2),
+          int.parse('0110111111', radix: 2),
+          int.parse('0111100000', radix: 2),
+          int.parse('1010000110', radix: 2),
+          int.parse('1100101100', radix: 2),
+        ],
+      );
+    });
+  }, tags: ['current']);
 
   group('unpackFromInt8, correct values', () {
     test('zero value', () {
@@ -128,6 +156,19 @@ void main() {
 
     test('5 elements', () {
       expect(0x6fde0a1b2c.unpackFromInt8, [0x6f, 0xde, 0x0a, 0x1b, 0x2c]);
+    });
+  });
+
+  group('fillWithOnesRight, correct values', () {
+    test('fill ones', () {
+      expect(fillWithOnesRight(0), 0x00);
+      expect(fillWithOnesRight(1), 0x01);
+      expect(fillWithOnesRight(2), 0x03);
+      expect(fillWithOnesRight(4), 0x0f);
+      expect(fillWithOnesRight(8), 0xff);
+      expect(fillWithOnesRight(16), 0xffff);
+      expect(fillWithOnesRight(24), 0xffffff);
+      expect(fillWithOnesRight(32), 0xffffffff);
     });
   });
 }

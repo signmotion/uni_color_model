@@ -31,9 +31,46 @@ extension ColorModelIntExt on int {
     return (this >> shift) & fillWithOnesRight(l);
   }
 
+  List<int> unpackFromIntDepth(
+    int depth, {
+    bool reverse = true,
+  }) {
+    final r = switch (this) {
+      == 0x00 => <int>[],
+      <= 0xff => [
+          channelFromIntDepth(0, depth),
+        ],
+      <= 0xffff => [
+          channelFromIntDepth(0, depth),
+          channelFromIntDepth(1, depth),
+        ],
+      <= 0xffffff => [
+          channelFromIntDepth(0, depth),
+          channelFromIntDepth(1, depth),
+          channelFromIntDepth(2, depth),
+        ],
+      <= 0xffffffff => [
+          channelFromIntDepth(0, depth),
+          channelFromIntDepth(1, depth),
+          channelFromIntDepth(2, depth),
+          channelFromIntDepth(3, depth),
+        ],
+      <= 0xffffffffff => [
+          channelFromIntDepth(0, depth),
+          channelFromIntDepth(1, depth),
+          channelFromIntDepth(2, depth),
+          channelFromIntDepth(3, depth),
+          channelFromIntDepth(4, depth),
+        ],
+      _ => throw ArgumentError('Supported int <= 0xffffffffff (5 bytes).'),
+    };
+
+    return reverse ? r : r.reversed.toList();
+  }
+
   /// See [ColorModelListIntExt.packToInt8].
   List<int> get unpackFromInt8 => switch (this) {
-        == 0x00 => [],
+        == 0x00 => <int>[],
         <= 0xff => [
             0xff & this,
           ],
