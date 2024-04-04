@@ -6,9 +6,9 @@ extension ListIntExt on List<int> {
   List<int> divideInt(int k) => List.generate(length, (i) => this[i] ~/ k);
 }
 
-/// Work for color.
+/// TODO(sign): Separated package `bit_coder`?
 extension ColorModelListIntExt on List<int> {
-  int get mergeWithShift8Left => switch (length) {
+  int get packToInt8 => switch (length) {
         0 => 0,
         1 => this[0],
         2 => (this[0] << 8) | this[1],

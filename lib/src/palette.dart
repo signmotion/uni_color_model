@@ -33,7 +33,7 @@ class UniPalette<T> {
     final list = l.map((c) {
       final hasAlpha = c.length == 4;
       final pc = hasAlpha ? c : [0xff, ...c];
-      return pc.mergeWithShift8Left;
+      return pc.packToInt8;
     });
 
     return UniPalette.iterableInt(list, model);
