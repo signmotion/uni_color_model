@@ -68,11 +68,11 @@ The formulas for color conversion are easily programmable, but we have many conv
 
 | alpha | model | type   | depth | structure  | tone           |
 | ----- | ----- | ------ | ----- | ---------- | -------------- |
-| false | cmyk  | double | 4     | ~~double~~ | int bits       |
-| true  | rgb   | int    | 8     | int        | int dec        |
-|       | hsl   |        | 10    | List       | int hex        |
-|       | hsv   |        | 16    | String     | num bits       |
-|       | xyz   |        |       | UniColor   | percent double |
+| false | cmyk  | double | 4     | ~~double~~ | bits           |
+| true  | rgb   | int    | 8     | int        | dec            |
+|       | hsl   |        | 10    | List       | hex            |
+|       | hsv   |        | 16    | String     | num            |
+|       | xyz   |        | ...   | Map? JSON? | percent double |
 |       |       |        |       |            | percent int    |
 
 - **alpha** == transparency (channel 0)
@@ -84,20 +84,89 @@ The formulas for color conversion are easily programmable, but we have many conv
   - **int bits** == use when `int dec` same `int hex`
   - **num bits** == generelization of `double` and `int`
 
-### Constructors `UniColor`
+### Supported combinations
 
-- `argbInt8Color`, `rgbInt8Color`, ...
-- `acmykInt8Color`, `acmykInt8Color`, ...
-- ...
+| model | no alpha | with alpha |
+| ----- | :------: | :--------: |
+| cmyk  |    ✅    |     ✅     |
+| rgb   |    ✅    |     ✅     |
+| hsl   |    ✅    |     ✅     |
+| hsv   |    ✅    |     ✅     |
+| xyz   |    ✅    |     ✅     |
 
-#### Structure `int bits`
+| model | int | double | num |
+| ----- | :-: | :----: | :-: |
+| acmyk | ✅  |   ✅   | ✅  |
+| argb  | ✅  |   ✅   | ✅  |
+| ahsl  | ✅  |   ✅   | ✅  |
+| ahsv  | ✅  |   ✅   | ✅  |
+| axyz  | ✅  |   ✅   | ✅  |
+|       |     |        |     |
+| cmyk  | ✅  |   ✅   | ✅  |
+| rgb   | ✅  |   ✅   | ✅  |
+| hsl   | ✅  |   ✅   | ✅  |
+| hsv   | ✅  |   ✅   | ✅  |
+| xyz   | ✅  |   ✅   | ✅  |
+
+| depth  |  1  |  2  | ... |  8  |  9  | 10  | 11  | 12  | ... | 64  |
+| ------ | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| int    | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |
+| double | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |
+| num    | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  | ✅  |
+
+- Supported **depth** means constructing a color with typed channels from `int`.
+- Theoretically, we have the option to create own color model with a single 64-bit channel.
+
+| structure | bits | dec | hex | num | % int | % double |
+| --------- | :--: | :-: | :-: | :-: | :---: | :------: |
+| int       |  ✅  |     |     |     |       |          |
+| List      |  ✅  |     | ✅  | ✅  |  ✅   |    ✅    |
+| String    |  ✅  | ✅  | ✅  |     |  ✅   |    ✅    |
+
+- Supported **structure** means keeping a color in these type (**tone**). For example, `List<int>`, `String<hex>`.
+
+### Structures
+
+#### `int<bits>`
 
 - `0x0a1b2c`
 - `0xff0a1b2c` with alpha
 - `0xabc == 0xaabbcc`
 - `0xa == 0xaaaaaa`
 
-#### Structure `String<int hex>`
+#### `List<bits>`
+
+- `[0xde, 0x0a, 0x1b, 0x2c]`
+
+#### `List<num>`
+
+- `[0.6, 0x0a, 0x1b, 0x2c]`
+
+#### `List<hex>`
+
+- `['0a', '1b', '2c']`
+
+#### `List<% int>`
+
+In range `[0; 100]`.
+
+- `['11%', '22%', '33%']`
+
+#### `List<% double>`
+
+In range `[0.0; 100.0]`.
+
+- `['0.15%', '22.00%', '33.45%']`
+
+#### `String<bits>`
+
+- `10100001101100101100`
+- `000010100001101100101100`
+- `00001010 00011011 00101100` Separated by 8 bits channels.
+- `1011 0010 1100` Separated by 4 bits channels.
+- `100 0011 01100 101100` Separated by 3:4:5:6 bits channels.
+
+#### `String<hex>`
 
 Case insensetivity.
 
@@ -108,7 +177,7 @@ Spaces between channels are allowed.
 - `'#abc' == 'a b c' == 'aabbcc'`
 - `'#a' == 'aaaaaa'`
 
-#### Structure `String<int dec>`
+#### `String<dec>`
 
 Included to TODO below.
 
@@ -116,7 +185,7 @@ Included to TODO below.
 - `'255 12 134 205'`
 - `'120' == '120 120 120'`
 
-#### Structure `String<percent double>`
+#### `String<% double>`
 
 Included to TODO below.
 
@@ -124,13 +193,15 @@ Included to TODO below.
 - `'1.0 0.12 0.134 0.205'`
 - `'0.120' == '0.12 0.12 0.12'`
 
-#### Structure `percent<int>`
+#### `String<% int>`
 
 Included to TODO below.
 
 - `'12% 13% 95%'`
 - `'100% 12% 13% 95%'`
 - `'20%' == '20% 20% 20%'`
+
+### Converters (WIP)
 
 A converter name using a these schema:
 
