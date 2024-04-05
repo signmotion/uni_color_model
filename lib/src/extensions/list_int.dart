@@ -35,12 +35,12 @@ extension ColorModelListIntExt on List<int> {
     final normalizedToBits = packToDepthsAsList(depths);
 
     var r = 0;
-    var prevDepth = 0;
-    for (var i = 0; i < normalizedToBits.length; ++i) {
+    var shift = 0;
+    for (var i = normalizedToBits.length - 1; i >= 0; --i) {
       final l = depths[i];
       final mask = fillWithOnesRight(l);
-      r = ((mask & normalizedToBits[i]) << prevDepth) | r;
-      prevDepth = l;
+      r |= ((mask & normalizedToBits[i]) << shift);
+      shift += l;
     }
 
     return r;

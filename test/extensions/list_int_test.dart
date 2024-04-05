@@ -55,4 +55,32 @@ void main() {
       expect(b.packToDepthAsList(10), [1023, 60, 281, 4, 907]);
     });
   });
+
+  group('packToDepth, correct values', () {
+    const b = [0xff, 0x0f, 0x46, 0x01, 0xe2];
+
+    test('empty list, 8 bits', () {
+      expect(<int>[].packToDepth(8), 0x0);
+    });
+
+    test('3 bits', () {
+      expect(b.packToDepth(3).hex(), '7086');
+    });
+
+    test('4 bits', () {
+      expect([0xff].packToDepth(4), 0x0f);
+      expect([0xff, 0xee].packToDepth(4).hex(), 'fe');
+      expect([0xff, 0x99].packToDepth(4).hex(), 'f9');
+      expect([0xff, 0x99, 0xaa].packToDepth(4).hex(), 'f9a');
+      expect(b.packToDepth(4).hex(), 'f140d');
+    });
+
+    test('8 bits', () {
+      expect(b.packToDepth(8).hex(), 'ff0f4601e2');
+    });
+
+    test('10 bits', () {
+      expect(b.packToDepth(10).hex(), '3ff0f1190138b');
+    });
+  }, tags: ['current']);
 }
