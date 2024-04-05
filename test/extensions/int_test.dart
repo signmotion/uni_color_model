@@ -16,19 +16,19 @@ void main() {
     });
 
     test('4 bits', () {
-      expect(b.channelFromIntDepth(0, 4).hex(1), 'a');
-      expect(b.channelFromIntDepth(1, 4).hex(1), '1');
-      expect(b.channelFromIntDepth(2, 4).hex(1), 'b');
-      expect(b.channelFromIntDepth(3, 4).hex(1), '2');
-      expect(b.channelFromIntDepth(4, 4).hex(1), 'c');
+      expect(b.channelFromIntDepth(0, 4), 0xa);
+      expect(b.channelFromIntDepth(1, 4), 0x1);
+      expect(b.channelFromIntDepth(2, 4), 0xb);
+      expect(b.channelFromIntDepth(3, 4), 0x2);
+      expect(b.channelFromIntDepth(4, 4), 0xc);
     });
 
     test('8 bits', () {
-      expect(b.channelFromIntDepth(0, 8).hex(), '6f');
-      expect(b.channelFromIntDepth(1, 8).hex(), 'de');
-      expect(b.channelFromIntDepth(2, 8).hex(), '0a');
-      expect(b.channelFromIntDepth(3, 8).hex(), '1b');
-      expect(b.channelFromIntDepth(4, 8).hex(), '2c');
+      expect(b.channelFromIntDepth(0, 8), 0x6f);
+      expect(b.channelFromIntDepth(1, 8), 0xde);
+      expect(b.channelFromIntDepth(2, 8), 0x0a);
+      expect(b.channelFromIntDepth(3, 8), 0x1b);
+      expect(b.channelFromIntDepth(4, 8), 0x2c);
     });
 
     test('10 bits', () {
