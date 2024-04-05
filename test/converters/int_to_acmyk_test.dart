@@ -17,7 +17,7 @@ void main() {
 
     test('acmykWith, depths for channels: equal 4 bits', () {
       final r = c.acmykWith(depth: 4);
-      expect(r.channels, [0x0a, 0x01, 0x0b, 0x02, 0x0c]);
+      expect(r.channels, [0xa, 0x1, 0xb, 0x2, 0xc]);
     });
 
     test('acmykWith, depths for channel: equal 8 bits', () {
