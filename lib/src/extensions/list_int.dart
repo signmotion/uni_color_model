@@ -26,4 +26,49 @@ extension ColorModelListIntExt on List<int> {
             (0xff & this[4]),
         _ => throw ArgumentError('Length should be 5 or less.'),
       };
+
+  // TODO(sign): optimize? Own code with fixed depth.
+  int packToDepth(int depth) =>
+      depth == 8 ? packToInt8 : packToDepths(List.filled(length, depth));
+
+  int packToDepths(List<int> depths) {
+    final normalizedToBits = packToDepthsAsList(depths);
+
+    var r = 0;
+    var prevDepth = 0;
+    for (var i = 0; i < normalizedToBits.length; ++i) {
+      final l = depths[i];
+      final mask = fillWithOnesRight(l);
+      r = ((mask & normalizedToBits[i]) << prevDepth) | r;
+      prevDepth = l;
+    }
+
+    return r;
+  }
+
+  List<int> packToDepthAsList(int depth) =>
+      packToDepthsAsList(List.filled(length, depth));
+
+  List<int> packToDepthsAsList(List<int> depths) {
+    final norm = normalized;
+
+    return [
+      for (var i = 0; i < norm.length; ++i)
+        (norm[i] * (depths[i].pow2N - 1)).round(),
+    ];
+  }
+
+  /// Normalized to range [0.0; 1.0] with max value from this list.
+  List<double> get normalized => isEmpty ? [] : normalizedWith(max: max);
+
+  /// Normalized to range [0.0; max].
+  List<double> normalizedWith({int? depth, int? max}) {
+    assert(depth != null || max != null);
+    assert((depth == null && max != null) || (depth != null && max == null));
+
+    final d = depth ?? 8;
+    final m = max ?? d.pow2N - 1;
+
+    return m == 0 ? List.filled(length, 0.0) : [for (final v in this) v / m];
+  }
 }

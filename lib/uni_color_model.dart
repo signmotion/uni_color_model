@@ -1,6 +1,6 @@
 library;
 
-import 'dart:math';
+import 'dart:math' hide max, min;
 
 import 'package:collection/collection.dart';
 import 'package:wfile/wfile.dart';
