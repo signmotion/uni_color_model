@@ -93,5 +93,5 @@ void main() {
       const depths = [2, 3, 4, 5, 6];
       expect(b.packToDepthsAsList(depths), [3, 0, 4, 0, 56]);
     });
-  }, tags: ['current']);
+  });
 }

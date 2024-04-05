@@ -25,9 +25,13 @@ extension ColorModelConverterIntToAcmykIntExt on AcmykColor<int> {
             (depth == null && depths != null),
         '`depth` or `depths` can be defined, but not both.');
 
-    //final d = depth ?? ColorModelConfig.bitsDepth;
-    //final ds = depths ?? [d, d, d, d, d];
+    final d = depth ?? ColorModelConfig.bitsDepth;
+    if (depth != null) {
+      return channels.packToDepth(d);
+    }
 
-    return channels.packToInt8;
+    final ds = depths ?? [d, d, d, d, d];
+
+    return channels.packToDepths(ds);
   }
 }
