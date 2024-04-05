@@ -31,6 +31,7 @@ extension ColorModelListIntExt on List<int> {
   int packToDepth(int depth) =>
       depth == 8 ? packToInt8 : packToDepths(List.filled(length, depth));
 
+  /// Packing each element to [int] with [ds] bits.
   int packToDepths(List<int> depths) {
     assert(length == depths.length);
 
