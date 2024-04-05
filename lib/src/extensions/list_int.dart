@@ -32,6 +32,8 @@ extension ColorModelListIntExt on List<int> {
       depth == 8 ? packToInt8 : packToDepths(List.filled(length, depth));
 
   int packToDepths(List<int> depths) {
+    assert(length == depths.length);
+
     final normalizedToBits = packToDepthsAsList(depths);
 
     var r = 0;
@@ -50,6 +52,8 @@ extension ColorModelListIntExt on List<int> {
       packToDepthsAsList(List.filled(length, depth));
 
   List<int> packToDepthsAsList(List<int> depths) {
+    assert(length == depths.length);
+
     final norm = normalized;
 
     return [

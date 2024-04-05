@@ -32,30 +32,6 @@ void main() {
     });
   });
 
-  group('packToDepthAsList, correct values', () {
-    const b = [0xff, 0x0f, 0x46, 0x01, 0xe2];
-
-    test('empty list, 8 bits', () {
-      expect(<int>[].packToDepthAsList(8), <int>[]);
-    });
-
-    test('3 bits', () {
-      expect(b.packToDepthAsList(3), [0x7, 0x0, 0x2, 0x0, 0x6]);
-    });
-
-    test('4 bits', () {
-      expect(b.packToDepthAsList(4), [0xf, 0x1, 0x4, 0x0, 0xd]);
-    });
-
-    test('8 bits', () {
-      expect(b.packToDepthAsList(8), b);
-    });
-
-    test('10 bits', () {
-      expect(b.packToDepthAsList(10), [1023, 60, 281, 4, 907]);
-    });
-  });
-
   group('packToDepth, correct values', () {
     const b = [0xff, 0x0f, 0x46, 0x01, 0xe2];
 
@@ -81,6 +57,41 @@ void main() {
 
     test('10 bits', () {
       expect(b.packToDepth(10).hex(), '3ff0f1190138b');
+    });
+  });
+
+  group('packToDepthAsList, correct values', () {
+    const b = [0xff, 0x0f, 0x46, 0x01, 0xe2];
+
+    test('empty list, 8 bits', () {
+      expect(<int>[].packToDepthAsList(8), <int>[]);
+    });
+
+    test('3 bits', () {
+      expect(b.packToDepthAsList(3), [0x7, 0x0, 0x2, 0x0, 0x6]);
+    });
+
+    test('4 bits', () {
+      expect(b.packToDepthAsList(4), [0xf, 0x1, 0x4, 0x0, 0xd]);
+    });
+
+    test('8 bits', () {
+      expect(b.packToDepthAsList(8), b);
+    });
+
+    test('10 bits', () {
+      expect(b.packToDepthAsList(10), [1023, 60, 281, 4, 907]);
+    });
+  });
+
+  group('packToDepthsAsList, correct values', () {
+    /// ff0f4601e2
+    const b = [0xff, 0x0f, 0x46, 0x01, 0xe2];
+
+    test('2:3:4:5:6 bits, reverse', () {
+      // bin 11111111000011110100 01 100 0000 00111 100010
+      const depths = [2, 3, 4, 5, 6];
+      expect(b.packToDepthsAsList(depths), [3, 0, 4, 0, 56]);
     });
   }, tags: ['current']);
 }
