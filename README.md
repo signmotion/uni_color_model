@@ -319,7 +319,19 @@ Once you start using the **UniColorModel**, it will become easy to choose the fu
 - HKS color system. <https://en.m.wikipedia.org/wiki/HKS_(colour_system)>
 - Natural color system. <https://en.m.wikipedia.org/wiki/Natural_Color_System>
 
-- CIE-LAB, CIE-LCH, CIE-LUV, XYY, HUNTER-LAB. [1](https://canva.com/colors/color-meanings/orange)
+- Color models:
+
+  - HEX. [1](https://en.wikipedia.org/wiki/Web_colors#Hex_triplet)
+  - HSL & HSV. [1](https://en.wikipedia.org/wiki/HSL_and_HSV)
+  - HWB. [1](https://en.wikipedia.org/wiki/HWB_color_model)
+  - CIE 1931 color space: XYZ [1](https://en.wikipedia.org/wiki/CIE_1931_color_space)
+
+- CIE-LAB [1](https://en.wikipedia.org/wiki/CIELAB_color_space#CIELAB),
+  CIE-LCH,
+  CIE-LUV,
+  XYY,
+  HUNTER-LAB.
+  [2](https://canva.com/colors/color-meanings/orange)
 
 - Color characteristics? For ex., LRV: <https://en.m.wikipedia.org/wiki/Light_reflectance_value> -> <https://thelandofcolor.com/lrv-light-reflectance-value-of-paint-colors>
   CR: <https://en.m.wikipedia.org/wiki/Color_rendering_index>
